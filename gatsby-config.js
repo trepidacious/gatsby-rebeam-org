@@ -38,5 +38,6 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-netlify`, // make sure to put last in the array
   ],
 }
