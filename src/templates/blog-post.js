@@ -11,6 +11,7 @@ export default ({ data }) => {
         <h2>{post.frontmatter.title}</h2>
         <p>
         <Label horizontal basic>{post.frontmatter.date}</Label>
+        
         </p>
         
         <div dangerouslySetInnerHTML={{ __html: post.html }} />

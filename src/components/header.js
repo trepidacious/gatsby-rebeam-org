@@ -1,18 +1,34 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Container } from 'semantic-ui-react'
+import { Container, Menu, Segment, Icon } from 'semantic-ui-react'
 import Logo from './logo.js'
 
 const Header = ({ siteTitle }) => (
-  <div style={{ background: '#464444' }}>
-    <Container>
-      <h1 style={{ padding: '1rem 0', marginBottom: '2rem' }}>
-        <Link style={{ color: 'white' }} to="/">
+  <Segment
+    inverted
+    textAlign='center'
+    vertical
+  >
+    <Menu
+      fixed='top'
+      inverted
+      size='huge'
+      style={{ background: '#464444' }}
+      secondary
+    >
+      <Container >
+        <Menu.Item as={Link} to="/">
           <Logo />{siteTitle}
-        </Link>
-      </h1>
-    </Container>
-  </div>
+        </Menu.Item>
+        <Menu.Menu position='right'>
+          <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank">
+            <Icon name="github" link inverted size='large' fitted></Icon>
+          </Menu.Item>
+        </Menu.Menu>
+        
+      </Container>
+    </Menu>
+  </Segment>
 )
 
 export default Header

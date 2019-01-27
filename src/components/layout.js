@@ -36,7 +36,7 @@ const Layout = ({ description, keywords, children }) => (
 
         <Header siteTitle={data.site.siteMetadata.title} />
 
-        <Container>
+        <Container style={{marginTop: '50px'}}>
 
           <Grid relaxed stackable>
             <Grid.Column mobile={16} tablet={4} computer={4}>
