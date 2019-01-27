@@ -1,15 +1,22 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { StaticQuery, Link, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
+import { Container, Grid, Menu } from 'semantic-ui-react'
 
-import { rhythm } from "../utils/typography"
-import { Helmet } from "react-helmet"
+import Header from './header'
 
-export default ({ description, children }) => (
+import 'semantic-ui-less/semantic.less'
+import { Link } from 'gatsby'
 
+const LinkedItem = ({ children, ...props }) => (
+  <Menu.Item as={Link} activeClassName='active' {...props}>{children}</Menu.Item>
+)
+
+const Layout = ({ description, keywords, children }) => (
   <StaticQuery
     query={graphql`
-      query {
+      query SiteTitleQuery {
         site {
           siteMetadata {
             title
@@ -18,43 +25,41 @@ export default ({ description, children }) => (
       }
     `}
     render={data => (
-      <div
-        css={css`
-          margin: 0 auto;
-          max-width: 700px;
-          padding: ${rhythm(2)};
-          padding-top: ${rhythm(1.5)};
-        `}
-      >
-        <Helmet>
-          <meta charSet="utf-8" />
-          {description && <meta name="Description" content={description}></meta>}
-          <title>{data.site.siteMetadata.title}</title>
-          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-        </Helmet>
+      <>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: description },
+            { name: 'keywords', content: keywords },
+          ]}
+        />
 
-        <Link to={`/`}>
-          <h3
-            css={css`
-              margin-bottom: ${rhythm(2)};
-              display: inline-block;
-              font-style: normal;
-            `}
-          >
-            {data.site.siteMetadata.title}
-          </h3>
-        </Link>
-        <Link
-          to={`/about/`}
-          css={css`
-            float: right;
-          `}
-        >
-          About
-        </Link>
-        {children}
-      </div>
+        <Header siteTitle={data.site.siteMetadata.title} />
+
+        <Container>
+          <Grid relaxed stackable>
+            <Grid.Column mobile={16} tablet={4} computer={4}>
+              <Menu vertical fluid>
+                <LinkedItem to='/' exact>Home</LinkedItem>
+                <LinkedItem to='/page-2'>Second Page</LinkedItem>
+                <LinkedItem to='/404'>404 Example Page</LinkedItem>
+              </Menu>
+            </Grid.Column>
+
+            <Grid.Column mobile={16} tablet={8} computer={8}>
+              {children}
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </>
     )}
   />
-  
 )
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  description: PropTypes.string,
+  keywords: PropTypes.string
+}
+
+export default Layout

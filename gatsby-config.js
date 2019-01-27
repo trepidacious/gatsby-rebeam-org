@@ -21,6 +21,7 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-less',
     {
       resolve: 'gatsby-plugin-html-attributes',
       options: {
@@ -35,12 +36,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    `gatsby-transformer-sharp`, 
+    `gatsby-plugin-sharp`,
   ],
 }
