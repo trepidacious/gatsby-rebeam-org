@@ -7,9 +7,8 @@ const Header = ({ siteTitle }) => (
   <div style={{ background: '#464444' }}>
     <Container>
       <h1 style={{ padding: '1rem 0', marginBottom: '2rem' }}>
-        <Logo />
         <Link style={{ color: 'white' }} to="/">
-          {siteTitle}
+          <Logo />{siteTitle}
         </Link>
       </h1>
     </Container>

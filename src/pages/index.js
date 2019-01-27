@@ -21,8 +21,8 @@ export default ({ data }) => {
             </Link> 
           </h3>
           <p>
-          <Label horizontal basic>{node.frontmatter.date}</Label>
-             {node.excerpt}
+            <Label horizontal basic>{node.frontmatter.date}</Label>
+            {node.excerpt}
           </p>
         </Segment>
 
