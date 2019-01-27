@@ -1,57 +1,43 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import { Button } from 'semantic-ui-react'
+// import { Button, List } from 'semantic-ui-react'
 import Layout from "../components/layout"
+import { Segment } from "semantic-ui-react";
 
 export default ({ data }) => {
-  console.log(data)
   return (
     <Layout description="Rebeam blog - Scala, tree data system, notes" keywords="Scala, React, Tree, Blog">
       
       <h2>
-        <span role="img" aria-label="Waving hand">
-          👋
-        </span>{' '}
-        Hey there!
+        Recent Blogs
       </h2>
 
-      <p>
-        Welcome to this humble Gatsby Semantic UI starter. It is a very thin layer
-        on top of the regular Gatsby 2 starter. All that has been added is
-        Semantic UI as the component library of choice.
-      </p>
-
-      <p>
-        Everything is pre-setup and ready to go. You can either use the default
-        Semantic UI theme as it currently runs, or you can override all variables
-        and make custom CSS changes in the <code>src/semantic/site</code> folder.
-      </p>
-
-      <p>
-        The folder contains all the standard settings of the default theme so you
-        don't have to remember which variables are available.
-      </p>
-
-      <Button primary>I'm a button!</Button>
-
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <p key={node.id}>
-          <Link
-            to={node.fields.slug}
-          >
-            <h3
-            >
-              {node.frontmatter.title}{" "}
-              <span
-              >
-                — {node.frontmatter.date}
-              </span>
+      {/* <List selection relaxed> */}
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          // <List.Item key={node.id} as={Link} to={node.fields.slug}>
+          //   <List.Content>
+          //     <List.Header >
+          //       {node.frontmatter.title} - {node.frontmatter.date}
+          //     </List.Header>
+          //     <List.Description>
+          //     {node.excerpt}
+          //     </List.Description>
+          //   </List.Content>
+          // </List.Item>
+          <Segment vertical key={node.id}>
+            <h3>
+              <Link to={node.fields.slug}>
+                {node.frontmatter.title} - {node.frontmatter.date}
+              </Link>
             </h3>
-            <p>{node.excerpt}</p>
-          </Link>
-        </p>
-      ))}
+            <p>
+              {node.excerpt}
+            </p>
+          </Segment>
+
+        ))}
+      {/* </List> */}
 
     </Layout>
   )

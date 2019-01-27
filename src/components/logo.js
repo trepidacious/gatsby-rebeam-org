@@ -36,6 +36,7 @@ import React from "react"
 
 import logo from "../images/icons/icon.svg"
 
+// TODO remove inline styling
 export default () => (
   <img src={logo} alt='Logo' width='32px' height='32px' style={{top: '8px', position: 'relative', marginRight: '8px'}}/>
 )

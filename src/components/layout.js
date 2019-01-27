@@ -40,9 +40,9 @@ const Layout = ({ description, keywords, children }) => (
           <Grid relaxed stackable>
             <Grid.Column mobile={16} tablet={4} computer={4}>
               <Menu vertical fluid>
-                <LinkedItem to='/' exact>Home</LinkedItem>
-                <LinkedItem to='/page-2'>Second Page</LinkedItem>
-                <LinkedItem to='/404'>404 Example Page</LinkedItem>
+                <LinkedItem to='/' key="Home">Home</LinkedItem>
+                {/* <LinkedItem to='/page-2'>Second Page</LinkedItem>
+                <LinkedItem to='/404'>404 Example Page</LinkedItem> */}
               </Menu>
             </Grid.Column>
 
