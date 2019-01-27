@@ -13,31 +13,20 @@ export default ({ data }) => {
         Recent Blogs
       </h2>
 
-      {/* <List selection relaxed> */}
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          // <List.Item key={node.id} as={Link} to={node.fields.slug}>
-          //   <List.Content>
-          //     <List.Header >
-          //       {node.frontmatter.title} - {node.frontmatter.date}
-          //     </List.Header>
-          //     <List.Description>
-          //     {node.excerpt}
-          //     </List.Description>
-          //   </List.Content>
-          // </List.Item>
-          <Segment vertical key={node.id}>
-            <h3>
-              <Link to={node.fields.slug}>
-                {node.frontmatter.title} - {node.frontmatter.date}
-              </Link>
-            </h3>
-            <p>
-              {node.excerpt}
-            </p>
-          </Segment>
+      {data.allMarkdownRemark.edges.map(({ node }) => (
 
-        ))}
-      {/* </List> */}
+        <Segment vertical key={node.id}>
+          <h3>
+            <Link to={node.fields.slug}>
+              {node.frontmatter.title} - {node.frontmatter.date}
+            </Link>
+          </h3>
+          <p>
+            {node.excerpt}
+          </p>
+        </Segment>
+
+      ))}
 
     </Layout>
   )
