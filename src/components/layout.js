@@ -42,6 +42,7 @@ const Layout = ({ description, keywords, children }) => (
             <Grid.Column mobile={16} tablet={4} computer={4}>
               <Menu vertical fluid>
                 <LinkedItem to='/' key="Home">Home</LinkedItem>
+                <LinkedItem to='/image' key="Home">Image</LinkedItem>
                 {/* <LinkedItem to='/page-2'>Second Page</LinkedItem>
                 <LinkedItem to='/404'>404 Example Page</LinkedItem> */}
               </Menu>
