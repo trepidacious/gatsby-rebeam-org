@@ -20,10 +20,10 @@ export default ({ data }) => {
               {node.frontmatter.title}
             </Link> 
           </h3>
-          <p>
+          <div>
             <Label horizontal basic>{node.frontmatter.date}</Label>
             {node.excerpt}
-          </p>
+          </div>
         </Segment>
 
       ))}
