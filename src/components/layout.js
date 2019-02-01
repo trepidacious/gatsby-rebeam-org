@@ -2,16 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { Container, Grid, Menu } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 
 import Header from './header'
 
 import 'semantic-ui-less/semantic.less'
-import { Link } from 'gatsby'
-
-const LinkedItem = ({ children, ...props }) => (
-  <Menu.Item as={Link} activeClassName='active' {...props}>{children}</Menu.Item>
-)
 
 const Layout = ({ description, keywords, children }) => (
   <StaticQuery
@@ -39,16 +34,7 @@ const Layout = ({ description, keywords, children }) => (
         <Container style={{marginTop: '50px'}}>
 
           <Grid relaxed stackable>
-            <Grid.Column mobile={16} tablet={4} computer={4}>
-              <Menu vertical fluid>
-                <LinkedItem to='/' key="Home">Home</LinkedItem>
-                <LinkedItem to='/image' key="Home">Image</LinkedItem>
-                {/* <LinkedItem to='/page-2'>Second Page</LinkedItem>
-                <LinkedItem to='/404'>404 Example Page</LinkedItem> */}
-              </Menu>
-            </Grid.Column>
-
-            <Grid.Column mobile={16} tablet={8} computer={8}>
+            <Grid.Column mobile={16} tablet={16} computer={16}>
               {children}
             </Grid.Column>
           </Grid>
