@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Container, Menu, Segment, Icon, Responsive, Dropdown } from 'semantic-ui-react'
+import { Container, Menu, Icon, Responsive, Dropdown } from 'semantic-ui-react'
 import Logo from './logo.js'
 import LogoMobile from './logo-mobile.js'
 
@@ -36,16 +36,12 @@ const links = [
 ];
 
 const Header = ({ siteTitle }) => (
-  <Segment
-    inverted
-    textAlign='center'
-    vertical
-  >
-
+  <>
     <Responsive as={Menu} maxWidth={767} fixed='top'
       inverted
       size='huge'
       style={{ background: '#464444' }}>
+
       <Container >
 
         <Link to='/' key='rebeam'>
@@ -69,43 +65,15 @@ const Header = ({ siteTitle }) => (
         </Menu.Menu>
 
       </Container>
+      
     </Responsive>
 
     <Responsive as={Menu} minWidth={768} fixed='top'
       inverted
       size='huge'
       style={{ background: '#464444' }}>
-    <Container >
 
-      <LinkedMenuItem color='violet' to='/' key='rebeam'>
-        <Logo />
-        {siteTitle}
-      </LinkedMenuItem>
-
-      {links.slice(1).map(({name, color, to}) => (
-        <LinkedMenuItem color={color} to={to} key={name}>
-          {name}
-        </LinkedMenuItem>
-      ))}
-
-      <Menu.Menu position='right'>
-        <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noreferrer">
-          <Icon name="github" link inverted size='large' fitted></Icon>
-        </Menu.Item>
-      </Menu.Menu>
-
-      </Container>
-    </Responsive>
-
-    {/* <Menu
-      fixed='top'
-      inverted
-      size='huge'
-      style={{ background: '#464444' }}
-    >
       <Container >
-
-        {}
 
         <LinkedMenuItem color='violet' to='/' key='rebeam'>
           <Logo />
@@ -123,21 +91,11 @@ const Header = ({ siteTitle }) => (
             <Icon name="github" link inverted size='large' fitted></Icon>
           </Menu.Item>
         </Menu.Menu>
-        
+
       </Container>
-    </Menu> */}
 
-
-    {/* <Dropdown item text='rebeam' floating pointing>
-          <Dropdown.Menu >
-            {links.map(({name, color, to}) => (
-              <LinkedDropdownItem color={color} to={to} key={name}>
-                {name}
-              </LinkedDropdownItem>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown> */}
-  </Segment>
+    </Responsive>
+  </>
 )
 
 export default Header
