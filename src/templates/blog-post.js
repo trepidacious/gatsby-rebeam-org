@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Label } from "semantic-ui-react";
+// import { Label } from "semantic-ui-react";
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -9,10 +9,7 @@ export default ({ data }) => {
     <Layout description={post.frontmatter.title}>
       <div>
         <h2>{post.frontmatter.title}</h2>
-        <p>
-        <Label horizontal basic>{post.frontmatter.date}</Label>
-        
-        </p>
+        <h3>{post.frontmatter.date}</h3>
         
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
