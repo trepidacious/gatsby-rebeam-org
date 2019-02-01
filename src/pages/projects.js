@@ -7,13 +7,15 @@ export default () => {
     <Layout description="Rebeam blog - Scala, tree data system, notes" keywords="Scala, React, Tree, Blog">
       
       <h2>
-        Rebeam
+        Projects
       </h2>
 
       <p>
-        Projects, blog and general information for rebeam.
+        List of projects and descriptions.
       </p>
 
     </Layout>
   )
 }
+
+

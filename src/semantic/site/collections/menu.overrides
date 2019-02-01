@@ -1,0 +1,55 @@
+.ui.inverted.menu .violet.active-text.item, .ui.inverted.violet.menu {
+    color: @lightViolet !important;
+}
+
+.ui.inverted.menu .red.active-text.item, .ui.inverted.violet.menu {
+  color: @lightRed !important;
+}
+
+.ui.inverted.menu .orange.active-text.item, .ui.inverted.violet.menu {
+  color: @lightOrange !important;
+}
+
+.ui.inverted.menu .teal.active-text.item, .ui.inverted.violet.menu {
+  color: @lightTeal !important;
+}
+
+@tabBorderSize: 5px;
+
+@borderColors: {
+  red: lightRed;
+  orange: lightOrange;
+  yellow: lightYellow;
+  olive: lightOlive;
+  green: lightGreen;
+  teal: lightTeal;
+  blue: lightBlue;
+  violet: lightViolet;
+  purple: lightPurple;
+  pink: lightPink;
+  brown: lightBrown;
+  grey: lightGrey;
+};
+
+each(@borderColors, {
+  .ui.inverted.menu .@{key}.active-border.item, .ui.inverted.@{key}.menu {
+    border-top: @tabBorderSize solid transparent !important;
+    border-bottom: @tabBorderSize solid @@value !important;
+  }
+});
+
+.ui.inverted.menu .with-border.item, .ui.inverted.with-border.menu {
+  border-top: @tabBorderSize solid transparent !important;
+  border-bottom: @tabBorderSize solid transparent !important;
+}
+
+// No dividing lines on inverted menu
+.ui.inverted.menu .item:before {
+  background: transparent !important;
+}
+
+// Logo - we need to override the 2.5em width for our logo
+.ui.menu .item.with-border > img:not(.ui) {
+  width: 26px !important;
+  margin-right: 8px;
+}

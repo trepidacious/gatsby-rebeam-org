@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 
 export default ({ data }) => (
   <Layout>
-    <h1>About {data.site.siteMetadata.title}</h1> 
+    <h2>About {data.site.siteMetadata.title}</h2> 
     <p>
       Blog test for rebeam.org
     </p>
