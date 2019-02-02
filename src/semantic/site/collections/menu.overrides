@@ -53,3 +53,15 @@ each(@borderColors, {
   width: 26px !important;
   margin-right: 8px;
 }
+
+@media only screen and (max-width: 600px) {
+  .ui.menu.desktop-header {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .ui.menu.mobile-header {
+    display: none;
+  } 
+} 
