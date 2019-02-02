@@ -28,16 +28,16 @@ const links = [
     to: '/blog',
     color: 'yellow'
   },
-  {
-    name: 'about',
-    to: '/about',
-    color: 'red'
-  },
+  // {
+  //   name: 'about',
+  //   to: '/about',
+  //   color: 'red'
+  // },
 ];
 
 const Header = ({ siteTitle }) => (
   <>
-    <Responsive as={Menu} maxWidth={767} fixed='top'
+    {/* <Responsive as={Menu} maxWidth={767} fixed='top'
       inverted
       size='huge'
       style={{ background: '#464444' }}>
@@ -65,12 +65,18 @@ const Header = ({ siteTitle }) => (
         </Menu.Menu>
 
       </Container>
-      
-    </Responsive>
 
-    <Responsive as={Menu} minWidth={768} fixed='top'
+    </Responsive> */}
+
+    {/* <Responsive as={Menu} minWidth={768} fixed='top'
       inverted
       size='huge'
+      style={{ background: '#464444' }}> */}
+
+    <Menu 
+      fixed='top'
+      inverted
+      size='small'
       style={{ background: '#464444' }}>
 
       <Container >
@@ -88,13 +94,15 @@ const Header = ({ siteTitle }) => (
 
         <Menu.Menu position='right'>
           <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noreferrer">
-            <Icon name="github" link inverted size='large' fitted></Icon>
+            <Icon name="github" link inverted fitted></Icon>
           </Menu.Item>
         </Menu.Menu>
 
       </Container>
 
-    </Responsive>
+    </Menu>
+
+    {/* </Responsive> */}
   </>
 )
 
