@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import { Container, Grid } from 'semantic-ui-react'
 
 import Header from './header'
+import BlogList from './blog-list'
 
 import 'semantic-ui-less/semantic.less'
 
@@ -33,9 +34,12 @@ const Layout = ({ description, keywords, children }) => (
 
         <Container style={{paddingTop: '80px'}}>
 
-          <Grid relaxed stackable>
-            <Grid.Column mobile={16} tablet={16} computer={16}>
+          <Grid centered relaxed stackable>
+            <Grid.Column mobile={16} tablet={10} computer={10}>
               {children}
+            </Grid.Column>
+            <Grid.Column mobile={16} tablet={4} computer={4}>
+              <BlogList></BlogList>
             </Grid.Column>
           </Grid>
 
