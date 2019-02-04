@@ -1,6 +1,7 @@
 ---
 title: "Gatsby Static Site"
 date: "2019-02-02"
+summary: "Configuring Gatsby as a simple blog."
 ---
 
 Configuring [Gatsby](https://www.gatsbyjs.org/) as a simple blog.
