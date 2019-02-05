@@ -31,11 +31,16 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
+        name: `src`, 
         path: `${__dirname}/src/`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      "resolve": `gatsby-transformer-remark`,
+      "options": {
+        "excerpt_separator": `<!--end-->`
+      }
+    },
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify`, // make sure to put last in the array

@@ -29,7 +29,7 @@ const BlogList = ({ description, keywords, children }) => (
     query={query}
     render={data => (
       <>
-        <h3>Blogs</h3>
+        <h3>Entries</h3>
         <List divided relaxed size='tiny'>
           {data.allMarkdownRemark.edges.map(({ node }) => (
             <List.Item key={node.id}>
@@ -42,7 +42,8 @@ const BlogList = ({ description, keywords, children }) => (
                 </List.Header>
                 <List.Description>
                   {/* <Label horizontal basic>{node.frontmatter.date}</Label> */}
-                  {node.frontmatter.summary}
+                  {/* {node.excerpt.split('<!--end-excerpt-->')[0]} */}
+                  {node.frontmatter.date}
                 </List.Description>
               </List.Content>
             </List.Item>

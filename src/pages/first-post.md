@@ -4,7 +4,7 @@ date: "2019-02-02"
 summary: "Configuring Gatsby as a simple blog."
 ---
 
-Configuring [Gatsby](https://www.gatsbyjs.org/) as a simple blog.
+Configuring Gatsby as a simple blog.<!--end-->
 
 This website uses the [Gatsby](https://www.gatsbyjs.org/) static site generator with [Semantic UI React](https://react.semantic-ui.com/) components, markdown for blog entries, and hosting on [Netlify](https://www.netlify.com/).
 
