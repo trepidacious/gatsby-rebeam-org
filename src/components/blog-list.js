@@ -33,7 +33,7 @@ const BlogList = ({ description, keywords, children }) => (
         <List divided relaxed size='tiny'>
           {data.allMarkdownRemark.edges.map(({ node }) => (
             <List.Item key={node.id}>
-              <List.Icon name='code' size='large' verticalAlign='middle' />
+              <List.Icon name='code' size='large' verticalAlign='middle' color='grey' />
 
               <List.Content>
                 <List.Header as={Link} to={node.fields.slug}>
