@@ -145,10 +145,13 @@
 @greenTextColor  : #1EBC30; // Green is difficult to read
 @tealTextColor   : #10A3A3; // Teal text is difficult to read
 @blueTextColor   : @blue;
-@violetTextColor : @violet;
+@violetTextColor : darken(@violet, 5);
 @purpleTextColor : @purple;
 @pinkTextColor   : @pink;
 @brownTextColor  : @brown;
+
+@darkGreyTextColor             : #2b2b2b;
+
 
 /*--- Colored Border ---*/
 @redBorderColor    : @redTextColor;
@@ -180,5 +183,5 @@
      Miscellaneous
 --------------------*/
 
-@linkColor: @blue;
+@linkColor: @violetTextColor;
 @linkHoverColor: darken(@linkColor, 10%);

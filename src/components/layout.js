@@ -34,11 +34,11 @@ const Layout = ({ description, keywords, children }) => (
 
         <Container style={{paddingTop: '80px'}}>
 
-          <Grid centered relaxed stackable>
+          <Grid centered relaxed>
             <Grid.Column mobile={16} tablet={10} computer={10}>
               {children}
             </Grid.Column>
-            <Grid.Column mobile={16} tablet={4} computer={4}>
+            <Grid.Column only='tablet computer' tablet={4} computer={4}>
               <BlogList></BlogList>
             </Grid.Column>
           </Grid>

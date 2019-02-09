@@ -1,0 +1,7 @@
+code {
+  // color: #f00;
+  background-color:  @transparentBlack;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  color: @darkGreyTextColor;
+}
