@@ -1,9 +1,10 @@
 
 a {
   text-decoration-color: fade(@linkColor, 35%);
+  font-weight: 700;
 }
 
-a {
+a:hover {
   text-decoration-color: fade(@linkHoverColor, 35%);
 }
 
@@ -50,7 +51,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 @codeTextColor    : #ddd;
 @codePunctuation  : @codeTextColor;
 @codeBackground   : @themeDarkGrey; //#2d2d2d;
-@codeComment      : #999;
+@codeComment      : #aaa;
 @codeTag          : @themeBrightPurple; //@themeRed; //#e2777a;
 @codeFunctionName : @themeRed; //#6196cc;
 @codeFunction     : @themeYellow; //#f08d49;

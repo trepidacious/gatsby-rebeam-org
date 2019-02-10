@@ -34,7 +34,7 @@ const Layout = ({ description, keywords, children }) => (
 
         <Container style={{paddingTop: '80px'}}>
 
-          <Grid centered relaxed>
+          <Grid centered>
             <Grid.Column mobile={16} tablet={10} computer={10}>
               {children}
             </Grid.Column>

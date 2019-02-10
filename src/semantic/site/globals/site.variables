@@ -187,8 +187,8 @@
      Miscellaneous
 --------------------*/
 
-@linkColor: @violetTextColor;
+@linkColor: @blue;//@violetTextColor;
 @linkHoverColor: darken(@linkColor, 10%);
 
-@linkUnderline: underline;
+// @linkUnderline: underline;
 @linkHoverUnderline: underline;
