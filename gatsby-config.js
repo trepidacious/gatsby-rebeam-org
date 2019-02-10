@@ -2,6 +2,7 @@ module.exports = {
   
   siteMetadata: {
     title: `rebeam`,
+    siteUrl: `https://www.rebeam.org`
   },
 
   plugins: [
@@ -81,6 +82,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`, // make sure to put last in the array
   ],
 }
