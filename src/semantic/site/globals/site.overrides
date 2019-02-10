@@ -1,7 +1,201 @@
-code {
-  // color: #f00;
-  background-color:  @transparentBlack;
-  border-radius: 3px;
-  padding: 0.2em 0.4em;
-  color: @darkGreyTextColor;
+
+a {
+  text-decoration-color: fade(@linkColor, 35%);
 }
+
+a {
+  text-decoration-color: fade(@linkHoverColor, 35%);
+}
+
+.ui.inverted.menu.theme-dark-grey {
+  background: @themeDarkGrey;
+}
+
+// h2:first-of-type::first-letter, h3:first-of-type::first-letter, h4:first-of-type::first-letter, h5:first-of-type::first-letter, h6:first-of-type::first-letter {
+//   // border-bottom: 3px solid @themeYellow;
+//   color: @redTextColor;
+// }
+
+// h2:nth-of-type(2)::first-letter, h3:nth-of-type(2)::first-letter, h4:nth-of-type(2)::first-letter, h5:nth-of-type(2)::first-letter, h6:nth-of-type(2)::first-letter {
+//   // border-bottom: 3px solid @themeYellow;
+//   color: @violetTextColor;
+// }
+
+
+// h2, h3, h4, h5, h6 {
+//   // border-bottom: 3px solid @themeYellow;
+//   color: @violetTextColor;
+// }
+
+// pre[class*="language-"] {
+//   border-radius: 8px;
+//   margin: 0.5em -1em;
+//   border: #2d2d2d solid 1em;
+//   padding: 0;
+//   // border-left-width: 1em;
+//   // border-right-width: 1em;
+// }
+
+
+// Prism.js
+
+/* PrismJS 1.15.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+@codeTextColor    : #ddd;
+@codePunctuation  : @codeTextColor;
+@codeBackground   : @themeDarkGrey; //#2d2d2d;
+@codeComment      : #999;
+@codeTag          : @themeBrightPurple; //@themeRed; //#e2777a;
+@codeFunctionName : @themeRed; //#6196cc;
+@codeFunction     : @themeYellow; //#f08d49;
+@codeSymbol       : @themeBrightYellow; //#f8c555;
+@codeKeyword      : @themeBrightPurple; //#cc99cd;
+@codeVariable     : @themeCyan; //#7ec699;
+@codeOperator     : @themeBrightCyan;// #67cdcc;
+@codeInserted     : green;
+
+@codeLineHeight: 1.5;
+
+@codeFontFamily   : Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+// `Inline code`
+code {
+  color: @darkGreyTextColor;
+  background-color:  @transparentBlack;
+  font-family: @codeFontFamily;
+  border-radius: 3px;
+  padding: 0.15em 0.3em;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: @codeTextColor;
+  background: none;
+  font-family: @codeFontFamily;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: @codeLineHeight;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: @codeBackground;
+  border-radius: .3em;
+}
+
+// Put padding outside column, except on mobile
+@media only screen and (min-width: 768px) {
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    margin: 0.5em -1em;
+  }
+} 
+
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  // border-radius: .3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: @codeComment;
+}
+
+.token.punctuation {
+  color: @codePunctuation;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: @codeTag;
+}
+
+.token.function-name {
+  color: @codeFunctionName;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: @codeFunction;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: @codeSymbol;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: @codeKeyword;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: @codeVariable;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: @codeOperator;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: @codeInserted;
+}
+

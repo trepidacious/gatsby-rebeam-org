@@ -33,13 +33,17 @@
     Theme Colors
 --------------------*/
 
+@themeDarkGrey       : #2E3947;
 @themeGrey           : #37474F;
+@themeLightGrey      : #4F5A5A;
 @themeBrightYellow   : #FFECB2;
-@themeThemeDarkGrey  : #080028;
 @themeRed            : #EC6B6B;
 @themeCyan           : #16E6E6;
+@themeBrightCyan     : rgb(141, 247, 247);
 @themeYellow         : #FFC400;
 @themePurple         : #AD82F9;
+@themeBrightPurple   : rgb(195, 160, 255);
+
 
 /*-------------------
       Site Colors
@@ -145,7 +149,7 @@
 @greenTextColor  : #1EBC30; // Green is difficult to read
 @tealTextColor   : #10A3A3; // Teal text is difficult to read
 @blueTextColor   : @blue;
-@violetTextColor : darken(@violet, 5);
+@violetTextColor : darken(@violet, 8);
 @purpleTextColor : @purple;
 @pinkTextColor   : @pink;
 @brownTextColor  : @brown;
@@ -185,3 +189,6 @@
 
 @linkColor: @violetTextColor;
 @linkHoverColor: darken(@linkColor, 10%);
+
+@linkUnderline: underline;
+@linkHoverUnderline: underline;

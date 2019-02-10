@@ -14,13 +14,13 @@ const LinkedMenuItem = ({ children, ...props }) => (
 
 const MobileHeader = ({siteTitle}) => (
   <Menu 
-    className='mobile-header'
+    className='mobile-header theme-dark-grey'
     fixed='top'
     inverted
     size='huge'
-    style={{ background: '#464444' }}>
+  >
 
-    <Container >
+    <Container>
 
       <Link to='/' key='rebeam'>
         <LogoMobile />
@@ -49,11 +49,11 @@ const MobileHeader = ({siteTitle}) => (
 
 const DesktopHeader = ({siteTitle}) => (
   <Menu 
-    className='desktop-header'
+    className='desktop-header theme-dark-grey'
     fixed='top'
     inverted
     size='huge'
-    style={{ background: '#464444' }}>
+  >
 
     <Container >
 

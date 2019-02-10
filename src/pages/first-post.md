@@ -26,9 +26,46 @@ Replace the layout provided by the tutorial with one using Semantic - I started 
 
 Using a plain image file (or an SVG as used for the logo on this site) was not covered by the Gatsby tutorial - however there is a good [doc page on adding images, fonts and files](https://www.gatsbyjs.org/docs/adding-images-fonts-files/) - essentially just import the file as if it were a JS file, and this will give you a path you can use in an `img`'s `src` attribute.
 
-### Making a responsive navbar
+### Making a responsive header
 
 The next step was to make the navbar/header for the site responsive. Initially I tried using the `Responsive` component from Semantic. This works well in `gatsby develop`, but using `gatsby build` and then `gatsby serve` produced odd errors. When viewed at desktop window sizes, the styling of some elements of the navbar was incorrect (this is intermittent, but can be reproduced consistently by running a lightouse audit - the page is incorrect after the audit completes). The root cause of this is SSR, server-side rendering. Because this is done on the server, it doesn't (easily) know what resolution the browser window will display when the server-rendered React components are "hydrated" on the client. In fact it renders at a window width of 0, and so selects the smallest display size. If this isn't what the client displays on its first render then React can't match up the server rendered data to the actual components. There are several solutions to this discussed in Semantic and React issues and docs, for example attempting to estimate the client size from its requests, or using state in components to trigger a re-render on the client. However these each have issues. As a simpler solution, the header just renders both the mobile and desktop components (they are both fixed to the top of the window so overlap), and uses plain CSS media queries to set the one we don't need to `display: none`. While this is a little less efficient (there is an extra set of invisible components at all times) it does work fine with SSR.
+
+Here's the mobile version of the header:
+```jsx
+// Mobile header
+<Menu 
+  className='mobile-header'
+  fixed='top'
+  inverted
+  size='huge'
+  style={{ background: '#464444' }}>
+
+  <Container>
+
+    <Link to='/' key='rebeam'>
+      <LogoMobile />
+    </Link>
+    
+    <Dropdown item text='rebeam' floating pointing>
+      <Dropdown.Menu >
+        {links.map(({name, color, to}) => (
+          <LinkedDropdownItem color={color} to={to} key={name}>
+            {name}
+          </LinkedDropdownItem>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
+
+    <Menu.Menu position='right'>
+      <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noreferrer">
+        <Icon name="github" link inverted size='large' fitted></Icon>
+      </Menu.Item>
+    </Menu.Menu>
+
+  </Container>
+
+</Menu>
+```
 
 ### Using gatsby-image
 
