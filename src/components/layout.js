@@ -9,7 +9,7 @@ import BlogList from './blog-list'
 
 import 'semantic-ui-less/semantic.less'
 
-const Layout = ({ description, keywords, children }) => (
+const Layout = ({ noBlogList, description, keywords, children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -35,12 +35,12 @@ const Layout = ({ description, keywords, children }) => (
         <Container style={{paddingTop: '80px'}}>
 
           <Grid centered>
-            <Grid.Column mobile={16} tablet={10} computer={10}>
+            <Grid.Column mobile={16} tablet={noBlogList ? 14 : 10} computer={noBlogList ? 14: 10}>
               {children}
             </Grid.Column>
-            <Grid.Column only='tablet computer' tablet={4} computer={4}>
+            {!noBlogList && <Grid.Column only='tablet computer' tablet={4} computer={4}>
               <BlogList></BlogList>
-            </Grid.Column>
+            </Grid.Column>}
           </Grid>
 
         </Container>

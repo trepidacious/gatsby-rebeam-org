@@ -6,7 +6,7 @@ import { Segment, Label } from "semantic-ui-react";
 
 export default ({ data }) => {
   return (
-    <Layout description="Rebeam blog - Scala, tree data system, notes" keywords="Scala, React, Tree, Blog">
+    <Layout noBlogList description="Rebeam blog - Scala, tree data system, notes" keywords="Scala, React, Tree, Blog">
       
       <h2>
         Recent Entries
