@@ -1,11 +1,6 @@
 
 a {
-  text-decoration-color: fade(@linkColor, 35%);
   font-weight: 700;
-}
-
-a:hover {
-  text-decoration-color: fade(@linkHoverColor, 35%);
 }
 
 .ui.inverted.menu.theme-dark-grey {
@@ -24,21 +19,11 @@ a:hover {
 
 
 // h2, h3, h4, h5, h6 {
-//   // border-bottom: 3px solid @themeYellow;
-//   color: @violetTextColor;
+//   border-bottom: 1px solid @themeBrightPurple;
+  
+//   // color: @violetTextColor;
+//   // background: @themeBrightPurple;
 // }
-
-// pre[class*="language-"] {
-//   border-radius: 8px;
-//   margin: 0.5em -1em;
-//   border: #2d2d2d solid 1em;
-//   padding: 0;
-//   // border-left-width: 1em;
-//   // border-right-width: 1em;
-// }
-
-
-// Prism.js
 
 /* PrismJS 1.15.0
 https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
@@ -63,22 +48,13 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 
 @codeLineHeight: 1.5;
 
-@codeFontFamily   : Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-
-// `Inline code`
-code {
-  color: @darkGreyTextColor;
-  background-color:  @transparentBlack;
-  font-family: @codeFontFamily;
-  border-radius: 3px;
-  padding: 0.15em 0.3em;
-}
 
 code[class*="language-"],
 pre[class*="language-"] {
   color: @codeTextColor;
   background: none;
-  font-family: @codeFontFamily;
+  font-family: @codeFont;
+  font-weight: @codeFontWeight;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -120,10 +96,14 @@ pre[class*="language-"] {
 
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  // border-radius: .3em;
+:not(pre) > code {
   white-space: normal;
+  color: @darkGreyTextColor;
+  background-color:  @transparentBlack;
+  font-family: @codeFont;
+  font-weight: @codeFontWeight;
+  border-radius: .3em;
+  padding: 0.15em 0.3em;
 }
 
 .token.comment,

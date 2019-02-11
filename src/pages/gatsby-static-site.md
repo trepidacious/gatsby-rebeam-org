@@ -22,6 +22,48 @@ Once you're finished with the tutorial, you can remove any styling you added, an
 
 Replace the layout provided by the tutorial with one using Semantic - I started from the [homepage layout example](https://react.semantic-ui.com/layouts/homepage) which shows the use of a `Menu`, `Container` etc. to give a fixed top bar. This was tweaked substantially to give the current [header.js](https://github.com/trepidacious/gatsby-rebeam-org/blob/master/src/components/header.js) used on this site.
 
+### Customising Semantic theme
+
+The semantic theme can be overriden in `src/semantic/site`. For example fonts and colors are defined in in `site.variables`. We can add new colors:
+
+```less
+@themeDarkGrey       : #2E3947;
+@themeGrey           : #37474F;
+@themeLightGrey      : #4F5A5A;
+@themeBrightYellow   : #FFECB2;
+@themeRed            : #EC6B6B;
+@themeCyan           : #16E6E6;
+@themeBrightCyan     : #8DF7F7;
+@themeYellow         : #FFC400;
+@themePurple         : #AD82F9;
+@themeBrightPurple   : #C3A0FF;
+```
+
+These will be available in other `less` files. `site.overrides` can be used for styling custom classes etc.
+
+To find other variables to customise, have a look in `node_modules/semantic-ui-less/themes/default` - you can copy and paste to the corresponding location in your site's theme, then modify. You only need to copy the variables you want to modify, other values will be inherited from the default theme.
+
+### Semantic fonts
+
+Fonts are also configured in `src/semantic/site/site.variables`. The default theme only uses one, Lato. We can add more variables to define a font for code examples:
+
+```less
+@codeFontName           : 'Fira Mono';
+@codeGoogleFontName     : 'Fira+Mono';
+@codeGoogleFontSizes    : '400';
+
+@codeFont          : @codeFontName, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+```
+
+We then need to modify the font request to get both the existing page font and our new code font:
+
+```less
+@googleFontRequest : '@{googleFontName}:@{googleFontSizes}|@{codeGoogleFontName}:@{codeGoogleFontSizes}&subset=@{googleSubset}';
+```
+
+We can then use the `@codeFont` variable for the `font-family` of code samples - see later section on configuring `prism.js`.
+
+
 ### Using image and file resources
 
 Using a plain image file (or an SVG as used for the logo on this site) was not covered by the Gatsby tutorial - however there is a good [doc page on adding images, fonts and files](https://www.gatsbyjs.org/docs/adding-images-fonts-files/) - essentially just import the file as if it were a JS file, and this will give you a path you can use in an `img`'s `src` attribute.
@@ -67,6 +109,15 @@ Here's the mobile version of the header:
 </Menu>
 ```
 
-### Using gatsby-image
+### Optimised images with gatsby-image
 
 Finally, the `image.js` page shows a very simple example of the use of the `gatsby-image` plugin/component to display the site logo. This uses a source image at 512x512 resolution, displaying at 256x256. If you check the page you can see that this produces a `picture` tag with multiple sources for 1x, 1.5x and 2x screens (i.e. normal and "hidpi" or "retina" displays). In addition, the image has a preloaded thumbnail that is then "blurred up" to the real image when it loads. This does show a possible issue with the plugin - each time the page displays (e.g. using forward/back in browser) the low-resolution thumbnail image is displayed behind the real one and then faded out. This is only visible because the image is non-rectangular with an alpha channel - should probably file an issue on this!
+
+### Code highlighting with Prism.js
+
+There's an excellent tutorial for the [gatsby-remark-prism](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/) plugin. There's a lot of detail here, covering displaying line numbers, line highlighting etc., and since we have semantic-ui set up we can use less for our code styling. Feel free to read the whole tutorial, but the required parts are:
+
+1. [Install](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#install)
+2. [How to use](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#how-to-use) - adding the plugin to `gatsby-config.js`. You might want to set `noInlineHighlight: true`.
+3. Instead of following [Include CSS](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#include-css) you can instead have a look at `src/semantic/site/site.overrides`, where we have translated the `tomorrow` theme into less, allowing the colors to be chosen with variables. This allows us to reuse our theme colors from `site.variables`, and use the `@codeFont` font family we defined in "Semantic fonts" earlier. We've also tweaked the formatting a little to give us rounded borders, to align the text to our columns, and to add some responsive variations. Finally we've adjusted the inline-code styles since we are not using prism.js for these, so we can remove the required `"language-"` class and use a light grey background with dark text - using the dark background here is a little jarring.
+4. We can now add some nicely formatted code to our markdown in the normal way, see [Usage in Markdown](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#usage-in-markdown)

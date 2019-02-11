@@ -2,22 +2,49 @@
        Fonts
 --------------------*/
 
-// @fontName          : 'Open Sans';
-// @fontSmoothing     : antialiased;
+/*      Code        */
 
-// @headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-// @pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@codeFontName           : 'Fira Mono';
+@codeGoogleFontName     : 'Fira+Mono';
+@codeGoogleFontSizes    : '400';
 
-// @googleFontName    : 'Open+Sans';
-// @importGoogleFonts : true;
-// @googleFontSizes   : '400,700,400italic,700italic';
-// @googleSubset      : 'latin';
+@codeFont               : @codeFontName, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+@codeFontWeight         : 400;
 
-// @googleProtocol    : 'https://';
-// @googleFontRequest : '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}';
+/*     Header       */
 
-// @bold              : bold;
-// @normal            : normal;
+// @headerFontName         : 'Questrial';
+// @headerGoogleFontName   : 'Questrial';
+@headerFontName         : 'Montserrat';
+@headerGoogleFontName   : 'Montserrat';
+@headerGoogleFontSizes  : '500';
+
+@headerFontWeight : 500;
+
+/*      Text        */
+
+@fontName          : 'Noto Sans';
+@fontSmoothing     : antialiased;
+
+@headerFont        : @headerFontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+@googleFontName    : 'Noto+Sans';
+@importGoogleFonts : true;
+@googleFontSizes   : '400,700,400italic,700italic';
+@googleSubset      : 'latin';
+
+@googleProtocol    : 'https://';
+
+// Page, code and header
+@googleFontRequest : '@{googleFontName}:@{googleFontSizes}|@{codeGoogleFontName}:@{codeGoogleFontSizes}|@{headerGoogleFontName}:@{headerGoogleFontSizes}&subset=@{googleSubset}';
+
+// Code and header
+// @googleFontRequest : '@{googleFontName}:@{googleFontSizes}|@{codeGoogleFontName}:@{codeGoogleFontSizes}&subset=@{googleSubset}';
+
+
+@bold              : bold;
+@normal            : normal;
 
 /*-------------------
       Base Sizes
@@ -39,10 +66,10 @@
 @themeBrightYellow   : #FFECB2;
 @themeRed            : #EC6B6B;
 @themeCyan           : #16E6E6;
-@themeBrightCyan     : rgb(141, 247, 247);
+@themeBrightCyan     : #8DF7F7;
 @themeYellow         : #FFC400;
 @themePurple         : #AD82F9;
-@themeBrightPurple   : rgb(195, 160, 255);
+@themeBrightPurple   : #C3A0FF;
 
 
 /*-------------------
