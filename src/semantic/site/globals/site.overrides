@@ -7,6 +7,10 @@ a {
   background: @themeDarkGrey;
 }
 
+.ui.inverted.segment.theme-dark-grey {
+  background: @themeDarkGrey;
+}
+
 // h2:first-of-type::first-letter, h3:first-of-type::first-letter, h4:first-of-type::first-letter, h5:first-of-type::first-letter, h6:first-of-type::first-letter {
 //   // border-bottom: 3px solid @themeYellow;
 //   color: @redTextColor;
