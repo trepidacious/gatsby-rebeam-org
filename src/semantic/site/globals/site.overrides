@@ -1,3 +1,12 @@
+// This gets everything at 100% height down to our "page" component.
+// This allows us to use more straightforward layout for sticky footer, etc.
+// The ___gatsby div is added by gatsby as a target to render react, and then
+// the next element down (currently a div) is added by the router.
+// https://github.com/gatsbyjs/gatsby/issues/7310
+// https://github.com/reach/router/issues/63#issuecomment-428050999
+html, body, #___gatsby, #___gatsby > * {
+  height: 100%
+}
 
 a {
   font-weight: 700;
