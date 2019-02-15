@@ -1,7 +1,27 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-// import { Label } from "semantic-ui-react";
+import rehypeReact from "rehype-react"
+import { List, Icon } from "semantic-ui-react";
+
+const SemanticOL = ({children}) => <List relaxed ordered as='ol'>{children}</List> 
+const SemanticUL = ({children}) => <List relaxed bulleted as='ul'>{children}</List> 
+const SemanticLI = ({children}) => <List.Item as='li'>{children}</List.Item> 
+
+// This will render the htmlAst contents of a post
+// using rehype, allowing us to replace elements with
+// react components - we currently use this to style
+// lists etc. as Semantic components
+// See https://using-remark.gatsbyjs.org/custom-components/
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: { 
+    'ul': SemanticUL, 
+    'ol': SemanticOL,
+    'li': SemanticLI,
+    'icon': Icon
+  },
+}).Compiler
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -9,9 +29,16 @@ export default ({ data }) => {
     <Layout description={post.frontmatter.title}>
       <div>
         <h2>{post.frontmatter.title}</h2>
-        {/* <h3>{post.frontmatter.date}</h3> */}
         
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        {
+          renderAst(post.htmlAst)
+        }
+
+        {/* 
+          Alternative code to use post.html directly. To use
+          this, change `htmlAst` field in graphQL query to just `html`
+          <div dangerouslySetInnerHTML={{ __html: post.html }} /> 
+        */}
       </div>
     </Layout>
   )
@@ -20,7 +47,8 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+      # Use just html if using dangerouslySetInnerHtml above
+      htmlAst
       frontmatter {
         title,
         date

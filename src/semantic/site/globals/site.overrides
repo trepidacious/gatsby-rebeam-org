@@ -8,6 +8,7 @@ html, body, #___gatsby, #___gatsby > * {
   height: 100%
 }
 
+// Bold links
 a {
   font-weight: 700;
 }
@@ -116,7 +117,7 @@ pre[class*="language-"] {
   font-family: @codeFont;
   font-weight: @codeFontWeight;
   border-radius: .3em;
-  padding: 0.15em 0.3em;
+  padding: 0.05em 0.15em;
 }
 
 .token.comment,

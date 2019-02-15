@@ -1,0 +1,20 @@
+ul.ui.list.relaxed li,
+ol.ui.list.relaxed li,
+.ui.list.relaxed > .item,
+.ui.list.relaxed .list > .item {
+  line-height: @paragraphLineHeight;
+}
+
+ul.ui.list.relaxed li:not(:first-child),
+ol.ui.list.relaxed li:not(:first-child),
+.ui.list.relaxed > .item:not(:first-child),
+.ui.list.relaxed .list > .item:not(:first-child) {
+  padding-top: @relaxedItemVerticalPadding;
+}
+
+ul.ui.list.relaxed li:not(:last-child),
+ol.ui.list.relaxed li:not(:last-child),
+.ui.list.relaxed > .item:not(:last-child),
+.ui.list.relaxed .list > .item:not(:last-child) {
+  padding-bottom: @relaxedItemVerticalPadding;
+}
