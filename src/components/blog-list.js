@@ -30,7 +30,7 @@ const BlogList = ({ description, keywords, children }) => (
     render={data => (
       <>
         <h3 style={{paddingTop: '7px'}}>Entries</h3>
-        <List divided relaxed='very' size='tiny'>
+        <List relaxed='very' size='tiny'>
           {data.allMarkdownRemark.edges.map(({ node }) => (
             <List.Item key={node.id}>
               <List.Icon name='code' size='large' verticalAlign='middle' color='grey' />

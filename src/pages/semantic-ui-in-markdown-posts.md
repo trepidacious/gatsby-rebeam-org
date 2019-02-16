@@ -5,13 +5,22 @@ date: "2019-02-15"
 
 Configuring Gatsby to render Markdown using Semantic UI components.<!--end-->
 
-In [Gatsby: Setting up a simple site](./gatsby-static-site) we set up Gatsby to process markdown files to blog pages, including highlighting code samples.
+<label color='violet' as='a' href='https://www.gatsbyjs.org/'>Gatsby</label>
+<label color='blue' as='a' href='https://www.gatsbyjs.org/'>Semantic UI</label>
+
+---
+
+### Introduction
+
+In [Gatsby: Setting up a simple site](/gatsby-static-site) we set up Gatsby to process markdown files to blog pages, including highlighting code samples.
 
 Out of the box, using the Semantic UI styles will handle simple elements in markdown, for example headers. However we can get better styling by using Semantic UI components from our markdown.
 
 The initial setup is covered by the docs on [remark custom components](https://using-remark.gatsbyjs.org/custom-components/). We will tweak this to render some Semantic UI components:
 
-1. Install `rehype-react`:
+### Setup
+
+1. Install [rehype-react](https://github.com/rhysd/rehype-react):
   ```
   yarn add rehype-react
   ```

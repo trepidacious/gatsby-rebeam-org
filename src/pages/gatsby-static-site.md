@@ -5,6 +5,15 @@ date: "2019-02-02"
 
 Configuring Gatsby as a simple blog site.<!--end-->
 
+<label color='violet' as='a' href='https://www.gatsbyjs.org/'>Gatsby</label>
+<label color='blue' as='a' href='https://www.gatsbyjs.org/'>Semantic UI</label>
+<label color='teal' as='a' href='https://www.netlify.com/'>Netlify</label>
+<label color='grey' as='a' href='https://prismjs.com/'>Prism.js</label>
+
+---
+
+### Introduction
+
 This website uses the [Gatsby](https://www.gatsbyjs.org/) static site generator with [Semantic UI React](https://react.semantic-ui.com/) components, markdown for blog entries, and hosting on [Netlify](https://www.netlify.com/).
 
 The process is actually fairly straightforward and there are excellent tutorials for most of it, however there are a few areas that took a little research. For future reference, here are the relevant links and fixes:

@@ -37,7 +37,7 @@ const MobileHeader = ({siteTitle}) => (
       </Dropdown>
 
       <Menu.Menu position='right'>
-        <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noreferrer">
+        <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noopener noreferrer">
           <Icon name="github" link inverted size='large' fitted></Icon>
         </Menu.Item>
       </Menu.Menu>
