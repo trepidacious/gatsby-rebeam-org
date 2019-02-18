@@ -33,6 +33,35 @@ a {
   padding-top: 90px;
 }
 
+.hero-logo {
+  top: 14px;
+  position: relative;
+  margin-left: 0px;
+  margin-right: 8px;
+}
+
+@media only screen and (max-width: 767px) {
+  .hero-svg-bg {
+    display: none;
+  }
+
+  .hero-h1 {
+    font-size: 40px;
+    padding-top: 45px;
+  }
+
+  .hero {
+    height: 290px;
+  }
+
+  .hero-logo {
+    top: 20px;
+    position: relative;
+    margin-left: 0px;
+    margin-right: 8px;
+  }
+}
+
 // h2:first-of-type::first-letter, h3:first-of-type::first-letter, h4:first-of-type::first-letter, h5:first-of-type::first-letter, h6:first-of-type::first-letter {
 //   // border-bottom: 3px solid @themeYellow;
 //   color: @redTextColor;
