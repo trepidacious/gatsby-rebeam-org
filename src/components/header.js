@@ -59,7 +59,8 @@ const DesktopHeader = ({siteTitle}) => (
 
       <LinkedMenuItem color='violet' to='/' key='rebeam'>
         <Logo />
-        {siteTitle}
+        {/* {siteTitle} */}
+        home
       </LinkedMenuItem>
 
       {links.slice(1).map(({name, color, to}) => (

@@ -21,6 +21,18 @@ a {
   background: @themeDarkGrey;
 }
 
+.hero {
+  height: 390px;
+  padding-top: 60px;
+  background: darken(@themeDarkGrey, 5);
+  color: @white;
+}
+
+.hero-h1 {
+  font-size: 60px;
+  padding-top: 90px;
+}
+
 // h2:first-of-type::first-letter, h3:first-of-type::first-letter, h4:first-of-type::first-letter, h5:first-of-type::first-letter, h6:first-of-type::first-letter {
 //   // border-bottom: 3px solid @themeYellow;
 //   color: @redTextColor;

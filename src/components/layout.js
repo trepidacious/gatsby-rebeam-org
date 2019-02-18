@@ -11,7 +11,7 @@ import 'semantic-ui-less/semantic.less'
 
 //See https://css-tricks.com/couple-takes-sticky-footer/ for footer layout, requires this
 //component to be in a 100% height parent, see site.overrides for styles to achieve this
-const Layout = ({ noBlogList, description, keywords, children }) => (
+const Layout = ({ noBlogList, hero, description, keywords, children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -39,7 +39,9 @@ const Layout = ({ noBlogList, description, keywords, children }) => (
 
         <div style={{ flex:'1 0 auto' }}>
           
-          <Container style={{paddingTop: '80px'}}>
+          {hero}
+
+          <Container style={{marginTop: hero ? '32px' : '92px'}}>
             <Grid centered>
               <Grid.Row>
                 <Grid.Column mobile={16} tablet={noBlogList ? 14 : 10} computer={noBlogList ? 14: 10}>
