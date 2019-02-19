@@ -1,29 +1,13 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import rehypeReact from "rehype-react"
 import { List, Icon, Label, Divider } from "semantic-ui-react";
-
-/**
- * Case-insensitive regex to identify absolute URLs
- * Matches start of line, then either:
- * a) a letter, then zero or more letters or 
- *    numbers, then a colon (a protocol)
- * b) a double forward slash (start of a 
- *    protocol-relative path)
- */
-const absoluteRegex = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
+import SmartLink from "../components/smart-link"
 
 const SemanticOL = ({children}) => <List relaxed ordered as='ol'>{children}</List> 
 const SemanticUL = ({children}) => <List relaxed bulleted as='ul'>{children}</List> 
 const SemanticLI = ({children}) => <List.Item as='li'>{children}</List.Item> 
-const RelativeOrAbsoluteLink = ({href, children}) => {
-  if (absoluteRegex.test(href)) {
-    return <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
-  } else {
-    return <Link to={href}>{children}</Link>
-  } 
-}
 
 // This will render the htmlAst contents of a post
 // using rehype, allowing us to replace elements with
@@ -39,7 +23,7 @@ const renderAst = new rehypeReact({
     'hr': Divider,
     'icon': Icon,
     'label': Label,
-    'a': RelativeOrAbsoluteLink
+    'a': SmartLink
   },
 }).Compiler
 

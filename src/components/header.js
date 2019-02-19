@@ -12,6 +12,13 @@ const LinkedMenuItem = ({ children, ...props }) => (
   <Menu.Item as={Link} activeClassName='active-border' className='with-border' {...props}>{children}</Menu.Item>
 )
 
+const githubIconLink = 
+  <Menu.Menu position='right'>
+    <Menu.Item as='a' href='https://github.com/trepidacious/gatsby-rebeam-org' title='Github' target="_blank" rel="noopener noreferrer">
+      <Icon name="github" link inverted size='large' fitted></Icon>
+    </Menu.Item>
+  </Menu.Menu>
+
 const MobileHeader = ({siteTitle}) => (
   <Menu 
     className='mobile-header theme-dark-grey'
@@ -36,11 +43,7 @@ const MobileHeader = ({siteTitle}) => (
         </Dropdown.Menu>
       </Dropdown>
 
-      <Menu.Menu position='right'>
-        <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noopener noreferrer">
-          <Icon name="github" link inverted size='large' fitted></Icon>
-        </Menu.Item>
-      </Menu.Menu>
+      {githubIconLink}
 
     </Container>
 
@@ -69,11 +72,7 @@ const DesktopHeader = ({siteTitle}) => (
         </LinkedMenuItem>
       ))}
 
-      <Menu.Menu position='right'>
-        <Menu.Item as='a' href='https://github.com/trepidacious' title='Github' target="_blank" rel="noreferrer">
-          <Icon name="github" link inverted size='large' fitted></Icon>
-        </Menu.Item>
-      </Menu.Menu>
+      {githubIconLink}
 
     </Container>
 

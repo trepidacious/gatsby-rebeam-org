@@ -25,6 +25,8 @@ a {
   height: 390px;
   padding-top: 60px;
   background: darken(@themeDarkGrey, 5);
+  background: linear-gradient(180deg, darken(@themeDarkGrey, 5) 0%, mix(darken(@themeDarkGrey, 5), @themeLightGrey, 80%) 100%);
+
   color: @white;
 }
 

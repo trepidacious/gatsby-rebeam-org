@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import { Icon } from "semantic-ui-react";
 
 export default () => {
   return (
@@ -11,7 +12,7 @@ export default () => {
       </h2>
 
       <p>
-        List of projects and descriptions.
+        <Icon name='pencil' color='violet'></Icon> TODO: List of projects, docs etc.
       </p>
 
     </Layout>
