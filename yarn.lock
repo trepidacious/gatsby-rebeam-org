@@ -4499,6 +4499,15 @@ gatsby-remark-prismjs@^3.2.4:
     parse-numeric-range "^0.0.2"
     unist-util-visit "^1.3.0"
 
+gatsby-remark-smartypants@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-smartypants/-/gatsby-remark-smartypants-2.0.8.tgz#969372c7dbf478467300a00d59da4c69fbaca967"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    retext "^5.0.0"
+    retext-smartypants "^3.0.0"
+    unist-util-visit "^1.3.0"
+
 gatsby-source-filesystem@^2.0.16:
   version "2.0.18"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.0.18.tgz#938b08cb9c78c5b48a37581dd5df27cef4b68843"
@@ -8838,6 +8847,34 @@ retext-english@^3.0.0:
   dependencies:
     parse-english "^4.0.0"
     unherit "^1.0.4"
+
+retext-latin@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/retext-latin/-/retext-latin-2.0.2.tgz#7b548937397ecdc47f7e242c77460c053f5b2555"
+  dependencies:
+    parse-latin "^4.0.0"
+    unherit "^1.0.4"
+
+retext-smartypants@^3.0.0:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/retext-smartypants/-/retext-smartypants-3.0.2.tgz#7e499ae914883e0d117ee9e983ee396621e0cb2a"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    unist-util-visit "^1.0.0"
+
+retext-stringify@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/retext-stringify/-/retext-stringify-2.0.2.tgz#f3885c5fccaa31998b53862acbb9058994eed27d"
+  dependencies:
+    nlcst-to-string "^2.0.0"
+
+retext@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/retext/-/retext-5.0.0.tgz#5d9018c4a677d6103c142362d76f50eb1d398bf6"
+  dependencies:
+    retext-latin "^2.0.0"
+    retext-stringify "^2.0.0"
+    unified "^6.0.0"
 
 rgb-regex@^1.0.1:
   version "1.0.1"

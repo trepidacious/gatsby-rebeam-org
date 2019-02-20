@@ -129,3 +129,7 @@ There's an excellent tutorial for the [gatsby-remark-prism](https://www.gatsbyjs
 2. [How to use](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#how-to-use) - adding the plugin to `gatsby-config.js`. You might want to set `noInlineHighlight: true`.
 3. Instead of following [Include CSS](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#include-css) you can instead have a look at `src/semantic/site/site.overrides`, where we have translated the `tomorrow` theme into less, allowing the colors to be chosen with variables. This allows us to reuse our theme colors from `site.variables`, and use the `@codeFont` font family we defined in "Semantic fonts" earlier. We've also tweaked the formatting a little to give us rounded borders, to align the text to our columns, and to add some responsive variations. Finally we've adjusted the inline-code styles since we are not using prism.js for these, so we can remove the required `"language-"` class and use a light grey background with dark text - using the dark background here is a little jarring.
 4. We can now add some nicely formatted code to our markdown in the normal way, see [Usage in Markdown](https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/#usage-in-markdown)
+
+### Smartypants quotes
+
+If you want nice "fancy quotes", correct apostrophe's (I think that's a totally grammatical apostrophe in the right place <icon name="thumbs up outline"></icon>), small - and large -- dashes then add [https://www.gatsbyjs.org/packages/gatsby-remark-smartypants/](gatsby-remark-smartypants).

@@ -41,6 +41,7 @@ module.exports = {
       options: {
         excerpt_separator: `<!--end-->`,
         plugins: [
+          `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
