@@ -13,13 +13,13 @@ a {
   font-weight: 700;
 }
 
-.ui.inverted.menu.theme-dark-grey {
-  background: @themeDarkGrey;
-}
+// .ui.inverted.menu.theme-dark-grey {
+  // background: @themeDarkGrey;
+// }
 
-.ui.inverted.segment.theme-dark-grey {
-  background: @themeDarkGrey;
-}
+// .ui.inverted.segment.theme-dark-grey {
+  // background: @themeDarkGrey;
+// }
 
 .hero {
   height: 390px;
