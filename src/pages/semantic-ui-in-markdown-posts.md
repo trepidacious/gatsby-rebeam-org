@@ -91,3 +91,63 @@ The initial setup is covered by the docs on [remark custom components](https://u
     *Made with <icon name='heart' color='violet'></icon> by rebeam.*
   ```
   Which should produce the following rather clich&eacute; result: *Made with <icon name='heart' color='violet'></icon> by rebeam.*
+
+7. We can also display tables with Semantic:
+   
+   ```markdown
+      | Bridge       | Designer       | Length |
+      |--------------|----------------|-------:|
+      | Brooklyn     | J. A. Roebling |   1595 |
+      | Manhattan    | G. Lindenthal  |   1470 |
+      | Williamsburg | L. L. Buck     |   1600 |
+    ```
+
+   | Bridge       | Designer       | Length |
+   |--------------|----------------|-------:|
+   | Brooklyn     | J. A. Roebling |   1595 |
+   | Manhattan    | G. Lindenthal  |   1470 |
+   | Williamsburg | L. L. Buck     |   1600 |
+
+   This needs the following custom components:
+   ```jsx
+    'table': Table,
+    'thead': Table.Header,
+    'tr': Table.Row,
+    'td': Table.Cell
+   ``` 
+
+   `Table` can also be customised - the example above uses `celled color='violet'`, see [templates/blog-post.js](https://github.com/trepidacious/gatsby-rebeam-org/blob/master/src/templates/blog-post.js).
+
+8. We can display blockquotes with a Semantic `Message` with a quote icon:
+
+   ```jsx
+     const MessageInfo = ({children}) => 
+       <Message icon>
+         <Icon name='quote left' color='black'></Icon>
+         <Message.Content>
+           {children}
+         </Message.Content>
+       </Message> 
+   ```
+
+   Register this with `'blockquote': MessageInfo` in `renderAst`. This will give you:
+
+   ```markdown
+      > **Nicely formatted blockquotes**  
+      > Quote all the things.
+   ```
+
+   Note we need a couple of spaces on the end of the first line to get a linebreak without a new paragraph.
+
+   > **Nicely formatted blockquotes**  
+   > Quote all the things.
+
+   You can still use other types of `Message` directly by registering with `'message': Message`:
+
+   ```jsx
+     <message negative=true>**Scary message!**</message>
+   ```
+
+   Note we need to use `negative=true` rather than the usual plain `negative` because of markdown parsing:
+
+   <message negative=true>**Scary message!**</message>

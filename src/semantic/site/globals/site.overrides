@@ -140,16 +140,16 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background: @codeBackground;
-  border-radius: .3em;
+  border-radius: .25rem;
 }
 
 // Put padding outside column, except on mobile
-@media only screen and (min-width: 768px) {
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    margin: 0.5em -1em;
-  }
-} 
+// @media only screen and (min-width: 768px) {
+//   :not(pre) > code[class*="language-"],
+//   pre[class*="language-"] {
+//     margin: 0.5em -1em;
+//   }
+// } 
 
 
 /* Inline code */
@@ -159,7 +159,7 @@ pre[class*="language-"] {
   background-color:  @transparentBlack;
   font-family: @codeFont;
   font-weight: @codeFontWeight;
-  border-radius: .3em;
+  border-radius: .25rem;
   padding: 0.05em 0.15em;
 }
 
