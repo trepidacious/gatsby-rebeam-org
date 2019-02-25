@@ -28,15 +28,19 @@ In [Gatsby: Semantic UI in Markdown posts](/semantic-ui-in-markdown-posts) we se
     const absoluteRegex = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
   ```
 2. Next we define a component to render as either an `<a>` set up to [open safely in a new tab](https://developers.google.com/web/tools/lighthouse/audits/noopener), or a `Link`:
-  ```jsx
-    const RelativeOrAbsoluteLink = ({href, children}) => {
-      if (absoluteRegex.test(href)) {
-        return <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
-      } else {
-        return <Link to={href}>{children}</Link>
-      } 
-    }
-  ```
+
+   ```jsx
+     const RelativeOrAbsoluteLink = ({href, children}) => {
+       if (absoluteRegex.test(href)) {
+         return <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
+       } else {
+         return <Link to={href}>{children}</Link>
+       } 
+     }
+   ```
+
+   Note that for different applications and site layouts you might need to tweak the logic above - for example when working with [Gatsby: Images in Markdown](./gatsby-markdown-images) you will need to add some exceptions for static and image links.
+
 3. Finally we need to add this as a custom component for rehype, standing in for `<a>`. You can see here the semantic components from before, and some other useful mappings:
   ```jsx
     const renderAst = new rehypeReact({
