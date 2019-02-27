@@ -1,6 +1,8 @@
 ---
 title: "Gatsby: Setting up a site"
 date: "2019-02-02"
+tags: ["Gatsby", "Semantic UI", "Netlify", "Prism.js"]
+description: "Configuring Gatsby as a simple blog site."
 ---
 
 Configuring Gatsby as a simple blog site.<!--end-->

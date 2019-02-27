@@ -1,6 +1,8 @@
 ---
 title: "Gatsby: Images in Markdown"
 date: "2019-02-20"
+tags: ["Gatsby"]
+description: "Use gatsby-remark-images for optimised images in markdown"
 ---
 
 Use gatsby-remark-images for optimised images in markdown<!--end-->

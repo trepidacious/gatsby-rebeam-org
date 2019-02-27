@@ -1,6 +1,8 @@
 ---
 title: "Gatsby: Semantic UI in Markdown posts"
 date: "2019-02-15"
+tags: ["Gatsby", "Semantic UI"]
+description: "Configuring Gatsby to render Markdown using Semantic UI components."
 ---
 
 Configuring Gatsby to render Markdown using Semantic UI components.<!--end-->
