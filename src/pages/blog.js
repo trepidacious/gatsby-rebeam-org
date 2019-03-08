@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import { Segment, Label } from "semantic-ui-react";
+import BlogTag from "../components/blog-tag"
 
 export default ({ data }) => {
   return (
@@ -21,8 +22,15 @@ export default ({ data }) => {
             </Link> 
           </h3>
           <div>
-            <Label horizontal basic>{node.frontmatter.date}</Label>
-            {node.excerpt}
+            <p>
+              {node.frontmatter.description}
+            </p>
+            <p>
+              <Label>{node.frontmatter.date}</Label>
+              {node.frontmatter.tags.map( (tag) => (
+                <BlogTag key={tag} tag={tag}/>
+              ))}
+            </p>
           </div>
         </Segment>
 
@@ -41,7 +49,9 @@ export const query = graphql`
           id
           frontmatter {
             title
-            date(formatString: "YYYY-MM-DD")
+            date(formatString: "YYYY-MM-DD"),
+            description,
+            tags
           }
           fields {
             slug

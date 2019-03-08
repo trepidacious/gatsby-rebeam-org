@@ -1,15 +1,8 @@
 ---
-title: "Gatsby: Semantic UI in Markdown posts"
+title: "Semantic UI in Markdown posts"
 date: "2019-02-15"
 tags: ["Gatsby", "Semantic UI"]
 description: "Configuring Gatsby to render Markdown using Semantic UI components."
----
-
-Configuring Gatsby to render Markdown using Semantic UI components.<!--end-->
-
-<label color='violet' as='a' href='https://www.gatsbyjs.org/'>Gatsby</label>
-<label color='blue' as='a' href='https://www.gatsbyjs.org/'>Semantic UI</label>
-
 ---
 
 ### Introduction

@@ -11,15 +11,19 @@ import { Link } from "gatsby";
  */
 const absoluteRegex = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
 
-export default ({href, children}) => {
-  // Use a plain link in a new tab for absolute urls, for /static content, and for images
-  if (
+export function isAbsoluteURL(href) {
+  return (
     absoluteRegex.test(href) ||
     href.startsWith('/static/') ||
     href.endsWith('.jpg') ||
     href.endsWith('.png') ||
     href.endsWith('.webp')
-  ) {
+  );
+}
+
+export default ({href, children}) => {
+  // Use a plain link in a new tab for absolute urls, for /static content, and for images
+  if (isAbsoluteURL(href)) {
     return <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
 
   // Assume everything else is a local link, which should go through the router

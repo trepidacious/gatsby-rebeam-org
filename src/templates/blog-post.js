@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import rehypeReact from "rehype-react"
 import { List, Icon, Label, Divider, Message, Table } from "semantic-ui-react";
 import SmartLink from "../components/smart-link"
+import BlogTag from "../components/blog-tag"
 
 const SemanticOL = ({children}) => <List relaxed ordered as='ol'>{children}</List> 
 const SemanticUL = ({children}) => <List relaxed bulleted as='ul'>{children}</List> 
@@ -49,6 +50,15 @@ export default ({ data }) => {
       <div>
         <h2>{post.frontmatter.title}</h2>
         
+        <p>{post.frontmatter.description}</p>
+        <p>
+          <Label>{post.frontmatter.date}</Label>
+          {post.frontmatter.tags.map( (tag) => (
+            <BlogTag key={tag} tag={tag}/>
+          ))}
+        </p>
+        <Divider/>
+
         {
           renderAst(post.htmlAst)
         }
@@ -70,9 +80,10 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title,
-        date
+        date,
+        description,
+        tags
       }
-
     }
   }
 `

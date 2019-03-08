@@ -1,14 +1,8 @@
 ---
-title: "Gatsby: Smart links in Markdown"
+title: "Smart links in Markdown"
 date: "2019-02-16"
 tags: ["Gatsby"]
 description: "Automatically use gatsby-link for internal links in markdown"
----
-
-Automatically use gatsby-link for internal links in markdown<!--end-->
-
-<label color='violet' as='a' href='https://www.gatsbyjs.org/'>Gatsby</label>
-
 ---
 
 ### Introduction

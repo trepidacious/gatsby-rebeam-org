@@ -1,17 +1,8 @@
 ---
-title: "Gatsby: Setting up a site"
+title: "Setting up a site"
 date: "2019-02-02"
 tags: ["Gatsby", "Semantic UI", "Netlify", "Prism.js"]
 description: "Configuring Gatsby as a simple blog site."
----
-
-Configuring Gatsby as a simple blog site.<!--end-->
-
-<label color='violet' as='a' href='https://www.gatsbyjs.org/'>Gatsby</label>
-<label color='blue' as='a' href='https://www.gatsbyjs.org/'>Semantic UI</label>
-<label color='teal' as='a' href='https://www.netlify.com/'>Netlify</label>
-<label color='grey' as='a' href='https://prismjs.com/'>Prism.js</label>
-
 ---
 
 ### Introduction
