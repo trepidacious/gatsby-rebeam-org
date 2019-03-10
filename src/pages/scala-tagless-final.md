@@ -168,7 +168,7 @@ Note we have a type alias `S[A]` to give us the required `F[_]` type parameter d
 
 We'll see how `EditOps` are implemented in a moment, but the purpose of the implicit `ops` parameter is to give some instances of our target monad `F` to our `Edit`, for it to use to build its output `F`. 
 
-While we can only start from the "approved" instances of 'F' provided by ops, we know that `F` is a monad, so we can compose the ops together to build larger programs. 
+While we can only start from the "approved" instances of `F` provided by ops, we know that `F` is a monad, so we can compose the ops together to build larger programs. 
 
 As an example, if ops contains just `get` and `set` operations as described above, that is all `Edit` can do. If we remove `set`, then `Edit` will be read-only - we'll see later how we can represent both read-write and read-only edits at the same time.
 
@@ -183,7 +183,7 @@ As an example, if ops contains just `get` and `set` operations as described abov
   }
 ```
 
-That is, each instance of `EditOps` works with a particular monad `F`, and will produce instances of that monad for our `get` and `set` operations. We can provide whatever operations we want to be available to programs, and only those, in the EditOps. They don't have to be produced by functions, we can also have just plain values etc.
+That is, each instance of `EditOps` works with a particular monad `F`, and will produce instances of that monad for our `get` and `set` operations. We can provide whatever operations we want to be available to programs, and only those, in the `EditOps`. They don't have to be produced by functions, we can also have just plain values etc.
 
 ### Implementing EditOps
 
@@ -228,7 +228,7 @@ When we want to run an `Edit` at the end of the world, we simply pick a "target"
 
 ### So what have we achieved?
 
-So far, we've just recreated what we had with Free - our operations are composed as monads, we have a restricted set of them available in programs, and we can choose any suitable "target" monad to actually run our programs (provided we implement `EditOps` for that monad).
+So far, we've just recreated what we had with `Free` - our operations are composed as monads, we have a restricted set of them available in programs, and we can choose any suitable "target" monad to actually run our programs (provided we implement `EditOps` for that monad).
 
 But now we can also  achieve our goal of different sets of operations working together by splitting up our operations. We can easily have a `ReadOps` trait providing read-only operations, in this case `get`, and another `WriteOps` trait with write operations, in this case just `set`. Our Edit will now require both:
 
