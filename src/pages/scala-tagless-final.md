@@ -35,11 +35,11 @@ The simplest possible way to represent an edit is directly as `Data => Data`. We
 
 ### Just use State!
 
-Luckily there is a common solution to this - the `State` monad, and it will do the job pretty well. I've always found the name slightly misleading - the monad definitely deals with the concept of state, but instances of the monad actually represent transformations of data (the state), rather than the state itself, which is just what we are after for representing edits to our data. 
+Luckily there is a common solution to this - the `State` monad, and it will do the job pretty well. I've always found the name slightly misleading - the monad definitely deals with the concept of state, but instances of the monad actually represent transformations of data (the state), rather than the state itself. This idea of transforming state is just what we need to represent edits to our `Data`. 
 
-Even better, State can produce an "output" alongside the modified data, this is the `A` in its type, `State[S, A]`. Each `State` value is essentially a function `S => (S, A)` - it takes the state data `S`, and produces both a new state data value, and an "output" `A`. 
+Even better, `State` can produce an "output" alongside the modified data, this is the `A` in its type, `State[S, A]`. Each `State` value is essentially a function `S => (S, A)` - it takes the state data `S`, and produces both a new state data value, and an "output" `A`. 
 
-This means that when `State`s are combined using `flatMap`, they are not just run one after another in sequence, but in fact each `State` in the sequence can use the outputs of all previous `State`s (as well as the `Data`) to determine what `Data` and output to produce itself. 
+This means that when `State`s are combined using `flatMap`, they are not just run one after another in sequence, but in fact each `State` in the sequence can use the outputs of all previous `State`s (as well as the `Data`) to determine what `Data` and output to produce. 
 
 <message info=true>If the preceding sentence doesn't make sense, try reading "State" as "Edit" and it may make more sense - when dealing with State, always remember that instances of State represent changes to state, not a particular state itself</message>
 
@@ -53,7 +53,7 @@ To see how using `State`, or any other monad, makes values from previous stages 
   } yield (outputOfA, outputOfB, outputOfC)
 ```
 
-Here we have 3 State instances, a, b and c, and we combine the "output" of each into a tuple. Now we can look at how this is "desugared" into calls to the monad's `flatMap` and `map` functions:
+Here we have 3 `State` instances, a, b and c, and we combine the "output" of each into a tuple. Now we can look at how this is "desugared" by the compiler into calls to the monad's `flatMap` and `map` functions:
 
 ```scala
   a.flatMap(
@@ -79,22 +79,22 @@ This also means that we can make composable building blocks, and combine them in
   } yield ()
 ```
 
-In this fairly artificial example, `findTokens` finds any values in the config Data that might be secret tokens that shouldn't be there, and `eraseTokens` uses this list to delete any entries with those values, by providing the result of `findTokens` to `eraseValues`.
+In this fairly artificial example, `findTokens` finds any values in the config `Data` that might be secret tokens that shouldn't be there, and `eraseTokens` uses this list to delete any entries with those values, by providing the result of `findTokens` to `eraseValues`.
 
 ### State's shortcomings
 
-This gives us a pretty effective approach, however there are still shortcomings. Firstly, if we use `State[Data, Unit]` directly as our "edit" type, any arbitrary transformation of the data is valid. In some situations, we might want only to permit additions to the map, or changes to particular keys, or to make sure some invariant is preserved by operations, but with `State` we will have to accept any transformation at all. 
+This gives us a pretty effective approach, however there are still shortcomings. Firstly, if we use `State[Data, Unit]` directly as our "edit" type, any arbitrary transformation of the data is valid. In some situations, we might want to permit only additions to the map, or changes to particular keys, or to make sure some invariant is preserved by operations. By using `State` directly we will have to accept any transformation at all. 
 
 ### Okay then use Free!
 
 This brings us to the next step - the `Free` monad. The implementation of `Free` tends a little towards boilerplate, so we'll just go over the key steps of the approach here. 
 
-First, we define a domain-specific language (DSL) by defining some "operations" or "actions". In our case, two that would make sense would be:
+First, we define a domain-specific language (DSL) by defining some "operations" or "actions". In our case, two that would make sense could be:
 
-1. `get`, accepting a key `String` and producing an `String` for the corresponding value (to make the examples simpler, we will return an empty string for missing keys, but in a real DSL you might want to use `Option[String]` instead).
-2. `set`, accepting a key and value and putting them into the map. 
+1. `get`, accepting a key `String` and producing a `String` for the corresponding value in the `Data`. To make the examples simpler, we will return an empty string for missing keys, but in a real DSL you might want to use `Option[String]` instead.
+2. `set`, accepting a key and value and putting them into the `Data` map. 
 
-Second, we (or more accurately a library like [Cats](https://typelevel.org/cats/)) will produce a `Free` monad from these operations, which will have instances representing `get` and `set`. 
+Next, we (or more accurately a library like [Cats](https://typelevel.org/cats/)) will produce a `Free` monad from these operations, which will have instances representing `get` and `set`. 
 
 Since this is a monad, these can still be combined the usual way with flatMap and map, and used in for-comprehensions, giving us something fairly natural looking:
 
@@ -108,21 +108,21 @@ Since this is a monad, these can still be combined the usual way with flatMap an
 
 Here we get the value for key "keyA", then use that as a key to look up another value b, then finally set the value for "keyC" to that value b, and return unit.
 
-Instances of the `Free` monad essentially just store enough information to recreate a sequence of operations in our DSL - unlike say the `State` monad they can't be directly "run" on `Data` to produce a modified `Data` result, however they can be easily transformed into a "target" monad like `State` that we _can_ run. 
+Instances of the `Free` monad essentially store just enough information to recreate a sequence of operations in our DSL - unlike say the `State` monad they can't be directly "run" on `Data` to produce a modified `Data` result, however they can be easily transformed into a "target" monad like `State` that we _can_ run. 
 
 This is done by translating each operation from the DSL to an instance of the target monad. We can then use the resulting monad as usual. So we've picked up a nice bonus, in that we are no longer tied to any one target monad - if we get sick of `State` and want to use `IO`, or any other monad, we can. We'll want to keep this advantage!
 
 ### Some problems solved, more noticed
 
-So, have we solved the original problem? Yes - by picking the desired set of operations in our DSL, we can exactly restrict what a program is capable of doing, which is what we needed. If we want to "bake in" some invariants in the `set` operation, we can - this is done when we transform to the "target" monad. If we want to omit the `set` operation completely, we can. 
+So, have we solved the original problem we identified with using `State` directly? Yes - by picking the desired set of operations in our DSL, we can exactly restrict what a program is capable of doing, which is what we needed. If we want to "bake in" some invariants in the `set` operation, we can - this is done when we transform to the "target" monad.
 
-The next problem comes when we want to have different sets of operations for different programs. For example we might want to have "views" as well as "edits", where a "view" can only use our `get` operation, but an "edit" can use both our `get` and our `set` operation. This would allow us to keep track of whether a given program might change the data, and check at compile-time that we won't try to change a locked configuration.
+The next problem comes when we want to have different sets of operations for different programs. For example we might want to have "views" as well as "edits", where a "view" can only use our `get` operation, but an "edit" can use both our `get` and our `set` operation. This would allow us to keep track of whether a given program might change the `Data` it operates on. This allows for compile-time checks - for example to check that we won't try to change a "locked" configuration.
 
 While it is possible to achieve this with Free, it requires a [significant amount of juggling and boilerplate](https://underscore.io/blog/posts/2017/03/29/free-inject.html). Hopefully tagless final will help us with this!
 
 ### Common factors
 
-Before we get to tagless final, let's look at similarities between the two implementations we've looked at so far.
+Before we get to tagless final, let's look at similarities between the two implementations we've tried so far.
 
 Firstly, both use monads. As described for `State`, this is what allows us to:
 
@@ -130,15 +130,17 @@ Firstly, both use monads. As described for `State`, this is what allows us to:
 2. each operation has access to the results of all previous operations, and 
 3. each operation has access to the `Data`
 
-Secondly, the important improvement when moving from using `State` directly to using `Free` was that we took away the ability of programs to use all the "capabilities" of `State` (e.g. arbitrary edits on the data) and instead gave them a restricted set of basic operations. In fact we took away all knowledge that we were going to end up transforming into a `State` monad at all, and made the choice of "target" monad flexible.
+Secondly, the important improvement when moving from using `State` (directly) to using `Free` was that we took away the ability of programs to use all the "capabilities" of `State`. This meant that instead of allowing programs to make arbitrary edits on the data, we could provide a restricted set of basic operations. In fact we took away the visible link between programs and the `State` monad, and made the choice of "target" monad flexible.
 
-So essentially we want to use an arbitrary monad for our programs, and we want programs to have to build themselves from only a pre-determined set of initial values of whichever monad is in use.
+So essentially we want to 
+1. Use an arbitrary monad for our programs, and
+2. ensure that programs are built from a pre-determined set of initial values of whichever monad is in use.
 
-Tagless final just uses a different approach to achieve this same result.
+Tagless final uses a different approach to `Free`, to achieve this same result.
 
 ### Finally, tagless
 
-Firstly, we require that our edit programs can produce a result in any arbitrary monad:
+First, we require that our "edit" programs can produce a result in any arbitrary monad:
 
 ```scala
   trait Edit{
@@ -158,7 +160,7 @@ So for any type `F[_]` with a `Monad` typeclass available, our edit needs to rep
 
 Note we have a type alias `S[A]` to give us the required `F[_]` type parameter describing our target monad, and `edit[S]` is equivalent to `someEdit.apply[S]`.
 
-`Edit` knows nothing about the actual monad used other than that it is a monad, so it can't cheat and use any unwanted instances of that monad. In fact at the moment it can't use any instances at all... let's fix that minor flaw!
+`Edit` knows nothing about the actual monad used other than that it is a monad (i.e. has a `Monad` typeclass available), so it can't cheat and use any unwanted instances of that monad. In fact at the moment it can't use any instances at all... let's fix that minor flaw!
 
 ```scala
   trait Edit{
@@ -183,7 +185,7 @@ As an example, if ops contains just `get` and `set` operations as described abov
   }
 ```
 
-That is, each instance of `EditOps` works with a particular monad `F`, and will produce instances of that monad for our `get` and `set` operations. We can provide whatever operations we want to be available to programs, and only those, in the `EditOps`. They don't have to be produced by functions, we can also have just plain values etc.
+That is, each instance of `EditOps` works with a particular monad `F`, and will produce instances of that monad that provide the `get` and `set` operations. We will include whatever operations we want to be available to programs, and only those, in the `EditOps` abstract class. These operations don't have to be produced by functions, we can also have plain values etc.
 
 ### Implementing EditOps
 
@@ -218,13 +220,13 @@ The final step is to write an actual `Edit` implementation. This looks very simi
   }
 ```
 
-So we still have the usual for comprehension, and indeed this looks exactly like it did before, but we add `import ops._` to get easy access to operations (we could instead use `ops.get` and `ops.set` inside the for-comprehension). We have then wrapped this up in an `Edit` instance. 
+So we still have the usual for comprehension in the middle, and indeed this looks exactly like it did before. We also add `import ops._` to get easy access to operations (we could instead use `ops.get` and `ops.set` inside the for-comprehension). We have then wrapped this up in an `Edit` instance, implementing the `apply` method. 
 
-As a side-note, although this isn't too bad at present it should get better with Scala 3, for example using 
+As a side-note, while this is a little clunky at present it should get more concise with the use of new features in Scala 3.
 
 ### Brief detour to the end of the world
 
-When we want to run an `Edit` at the end of the world, we simply pick a "target" monad `F`, make sure an appropriate `EditOps` instance is in implicit scope for `F`, and then call `edit[F]` to get an instance of `F` we can run.
+When we want to run an `Edit` at the "end of the world", we simply pick a "target" monad `F`, make sure an appropriate `EditOps` instance is in implicit scope for `F`, and then call `edit[F]` to get an instance of `F` we can run.
 
 ### So what have we achieved?
 
@@ -238,7 +240,7 @@ But now we can also  achieve our goal of different sets of operations working to
   }
 ```
 
-But a new 'View' trait won't:
+But a new `View` trait won't require the `WriteOps`. We can also return `F[A]` from `apply` so that a `View[A]` can produce a result of type `A` when run:
 
 ```scala
   trait View[A] {
@@ -246,22 +248,24 @@ But a new 'View' trait won't:
   }
 ```
 
-We then know that a View can only produce a program with read-only operations - it simply has no access to any `WriteOps`. But if we want to use a `View` from within an `Edit` we can - the edit's `readOps` will be implicitly available. Since we are using implicit parameters we don't need to keep track of the ops instances, but the compiler will warn us if we try to do something requiring operations we don't have access to in a program.
+We then know that a `View` can only produce a program with read-only operations - it simply has no access to any `WriteOps`. But if we want to use a `View` from within an `Edit`, we can; the `Edit`'s `readOps` will be implicitly available. 
 
-By grouping the operations in traits we have a lot of flexibility in building a tree of capabilities, for example by extending traits to add extra operations or to combine multiple traits into one.
+Since we are using implicit parameters we don't need to keep track of the ops instances, but the compiler will warn us if we try to do something requiring operations we don't have access to in a program. For example if we call an `Edit` from a `View`, that will produce an error.
+
+By grouping the operations in traits we have a lot of flexibility in building a tree of capabilities, for example by extending traits to add extra operations or to group multiple traits into one.
 
 ### Do we always need Monad?
 
 In all the examples above, we've used `[F[_]: Monad]` in our `Edit` and `View` traits - i.e. we have stated that `F` must be a monad (have a `Monad` typeclass available). However this isn't required - if there is another typeclass that provides what you need for a program (for example `Applicative`) then this can be used instead. 
 
-Again, since these are typeclasses and so are passed implicitly, you don't need to keep track of which one you are working with when using a program - the compiler will tell you if you try to use a `Monad` when you only have an `Applicative`. On the other hand it's no problem to call an `Applicative` program from a `Monad` one, since all monads are applicative. So we've actually picked up another bonus capability - precisely describing not just which operations a program uses, but how it can combine them. 
+Again, since these are typeclasses and so are passed implicitly, you don't need to keep track of which one you are working with when using a program; the compiler will tell you if you try to use a `Monad` when you only have an `Applicative`. On the other hand it's no problem to call an `Applicative` program from a `Monad` program, since all monads are applicative. So we've actually picked up another bonus capability - precisely describing not just which operations a program uses, but how it can combine them. 
 
-Another bonus relative to Free is that our programs (e.g. `Edit` and `View`) are essentially just functions, rather than an additional layer of representation like Free. When we `apply` them, they just build the actual monad we need directly. This does lead to one disadvantage - these functions are "opaque" - we can only tell what they do by calling them. On the plus side, we can for example use a target monad that _can_ be inspected and manipulated, perhaps even Free :) This loses the efficiency advantage, but keeps the others.
+Another bonus relative to `Free` is that our programs (e.g. `Edit` and `View`) are essentially just functions, rather than an additional layer of representation like `Free`. When we `apply` them, they just build the actual monad we need directly. One disadvantage is that these functions are "opaque", we can only tell what they do by calling them. To work around this we can use a target monad that _can_ be inspected and manipulated, perhaps even `Free` :) This loses the efficiency advantage of tagless final, but keeps the other advantages, and is only necessary if we need to inspect the program rather than simply running it.
 
 ### Summary
 
 In summary we can look at the construction of tagless final as being based on:
 
-1. Asking programs to provide themselves "as" arbitrary monads, thus allowing us to choose the target monad while preventing the program from using any knowledge of the target monad, and 
-2. Implicitly providing programs with some monad instances to start from, which they can then combine arbitrarily.
+1. Asking programs to provide themselves "as" arbitrary monads, thus allowing us to choose the target monad while preventing the program from using any knowledge of that target monad, and 
+2. Implicitly providing programs with some monad instances to start from, which they can combine however is needed.
 
