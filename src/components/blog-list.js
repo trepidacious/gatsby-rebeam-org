@@ -1,6 +1,5 @@
-import React from "react"
-import { Link, graphql, StaticQuery } from "gatsby"
-
+import React from "react";
+import { Link, graphql, StaticQuery } from "gatsby";
 import { List } from "semantic-ui-react";
 
 const query = graphql`
@@ -22,23 +21,28 @@ const query = graphql`
       }
     }
   }
-`
+`;
 
 const BlogList = ({ description, keywords, children }) => (
   <StaticQuery
     query={query}
     render={data => (
       <>
-        <h3 style={{paddingTop: '7px'}}>Entries</h3>
-        <List relaxed='very' size='tiny'>
+        <h3 style={{ paddingTop: "7px" }}>Entries</h3>
+        <List relaxed="very" size="tiny">
           {data.allMarkdownRemark.edges.map(({ node }) => (
             <List.Item key={node.id}>
-              <List.Icon name='code' size='large' verticalAlign='middle' color='grey' />
+              <List.Icon
+                name="code"
+                size="large"
+                verticalAlign="middle"
+                color="grey"
+              />
 
               <List.Content>
                 <List.Header as={Link} to={node.fields.slug}>
-                {node.frontmatter.title}
-                {/* <Label basic pointing='left'>{node.frontmatter.date}</Label>  */}
+                  {node.frontmatter.title}
+                  {/* <Label basic pointing='left'>{node.frontmatter.date}</Label>  */}
                 </List.Header>
                 <List.Description>
                   {/* <Label horizontal basic>{node.frontmatter.date}</Label> */}
@@ -52,9 +56,8 @@ const BlogList = ({ description, keywords, children }) => (
       </>
     )}
   />
-)
+);
 
-BlogList.propTypes = {
-}
+BlogList.propTypes = {};
 
-export default BlogList
+export default BlogList;
