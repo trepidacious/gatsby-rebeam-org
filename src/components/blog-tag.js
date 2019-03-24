@@ -12,7 +12,11 @@ const metadata = {
   Netlify: { color: "teal", url: "https://www.netlify.com/" },
   "Prism.js": { color: "grey", url: "https://prismjs.com/" },
   Scala: { color: "red", url: "https://www.scala-lang.org/" },
-  Prettier: { color: "yellow", url: "https://prettier.io/" }
+  Prettier: { color: "yellow", url: "https://prettier.io/" },
+  Javascript: {
+    color: "yellow",
+    url: "https://en.wikipedia.org/wiki/JavaScript"
+  }
 };
 
 const colors = [
