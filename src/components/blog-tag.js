@@ -7,15 +7,41 @@ import { Link } from "gatsby";
  * Known tags get a custom color and url
  */
 const metadata = {
-  Gatsby: { color: "violet", url: "https://www.gatsbyjs.org/" },
-  "Semantic UI": { color: "blue", url: "https://react.semantic-ui.com/" },
-  Netlify: { color: "teal", url: "https://www.netlify.com/" },
-  "Prism.js": { color: "grey", url: "https://prismjs.com/" },
-  Scala: { color: "red", url: "https://www.scala-lang.org/" },
-  Prettier: { color: "yellow", url: "https://prettier.io/" },
+  Gatsby: {
+    color: "violet",
+    url: "https://www.gatsbyjs.org/"
+  },
+  "Semantic UI": {
+    color: "blue",
+    url: "https://react.semantic-ui.com/"
+  },
+  Netlify: {
+    color: "teal",
+    url: "https://www.netlify.com/"
+  },
+  "Prism.js": {
+    color: "grey",
+    url: "https://prismjs.com/"
+  },
+  Scala: {
+    color: "red",
+    url: "https://www.scala-lang.org/"
+  },
+  Prettier: {
+    color: "yellow",
+    url: "https://prettier.io/"
+  },
   Javascript: {
     color: "yellow",
     url: "https://en.wikipedia.org/wiki/JavaScript"
+  },
+  "VS Code": {
+    color: "violet",
+    url: "https://code.visualstudio.com/"
+  },
+  Git: {
+    color: "red",
+    url: "https://git-scm.com/"
   }
 };
 
