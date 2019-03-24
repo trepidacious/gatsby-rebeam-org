@@ -1,5 +1,4 @@
 module.exports = {
-  
   siteMetadata: {
     title: `rebeam`,
     siteUrl: `https://www.rebeam.org`
@@ -17,24 +16,24 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: "standalone",
-        icon: "src/images/icons/512x512.png", // This path is relative to the root of the site.
+        icon: "src/images/icons/512x512.png" // This path is relative to the root of the site.
       }
     },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-less',
+    "gatsby-plugin-offline",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-less",
     {
-      resolve: 'gatsby-plugin-html-attributes',
+      resolve: "gatsby-plugin-html-attributes",
       options: {
-        lang: 'en'
+        lang: "en"
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`, 
-        path: `${__dirname}/src/`,
-      },
+        name: `src`,
+        path: `${__dirname}/src/`
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -75,8 +74,8 @@ module.exports = {
               showLineNumbers: false,
               // If setting this to true, the parser won't handle and highlight inline
               // code used in markdown i.e. single backtick code like `this`.
-              noInlineHighlight: true,
-            },
+              noInlineHighlight: true
+            }
           },
           {
             resolve: `gatsby-remark-images`,
@@ -84,15 +83,15 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 590,
-            },
-          },
-        ],
-      },
+              maxWidth: 590
+            }
+          }
+        ]
+      }
     },
-    `gatsby-transformer-sharp`, 
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-netlify`, // make sure to put last in the array
-  ],
-}
+    `gatsby-plugin-netlify` // make sure to put last in the array
+  ]
+};
