@@ -90,12 +90,12 @@ The initial setup is covered by the docs on [remark custom components](https://u
 7. We can also display tables with Semantic:
    
    ```markdown
-      | Bridge       | Designer       | Length |
-      |--------------|----------------|-------:|
-      | Brooklyn     | J. A. Roebling |   1595 |
-      | Manhattan    | G. Lindenthal  |   1470 |
-      | Williamsburg | L. L. Buck     |   1600 |
-    ```
+   | Bridge       | Designer       | Length |
+   |--------------|----------------|-------:|
+   | Brooklyn     | J. A. Roebling |   1595 |
+   | Manhattan    | G. Lindenthal  |   1470 |
+   | Williamsburg | L. L. Buck     |   1600 |
+   ```
 
    | Bridge       | Designer       | Length |
    |--------------|----------------|-------:|
@@ -116,20 +116,20 @@ The initial setup is covered by the docs on [remark custom components](https://u
 8. We can display blockquotes with a Semantic `Message` with a quote icon:
 
    ```jsx
-     const MessageInfo = ({children}) => 
-       <Message icon>
-         <Icon name='quote left' color='black'></Icon>
-         <Message.Content>
-           {children}
-         </Message.Content>
-       </Message> 
+   const MessageInfo = ({children}) => 
+     <Message icon>
+       <Icon name='quote left' color='black'></Icon>
+       <Message.Content>
+         {children}
+       </Message.Content>
+     </Message> 
    ```
 
    Register this with `'blockquote': MessageInfo` in `renderAst`. This will give you:
 
    ```markdown
-      > **Nicely formatted blockquotes**  
-      > Quote all the things.
+    > **Nicely formatted blockquotes**  
+    > Quote all the things.
    ```
 
    Note we need a couple of spaces on the end of the first line to get a linebreak without a new paragraph.
@@ -140,7 +140,7 @@ The initial setup is covered by the docs on [remark custom components](https://u
    You can still use other types of `Message` directly by registering with `'message': Message`:
 
    ```jsx
-     <message negative=true>**Scary message!**</message>
+   <message negative=true>**Scary message!**</message>
    ```
 
    Note we need to use `negative=true` rather than the usual plain `negative` because of markdown parsing:
