@@ -59,4 +59,5 @@ const BlogList = ({ description, keywords, children }) => (
 );
 
 BlogList.propTypes = {};
+
 export default BlogList;
