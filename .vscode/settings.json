@@ -1,5 +1,4 @@
 {
-  "git.ignoreLimitWarning": true,
   "files.associations": {
     "*.variables": "less",
     "*.overrides": "less",
