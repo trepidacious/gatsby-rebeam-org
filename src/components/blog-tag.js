@@ -32,7 +32,7 @@ const metadata = {
     url: "https://prettier.io/"
   },
   Javascript: {
-    color: "yellow",
+    color: "teal",
     url: "https://en.wikipedia.org/wiki/JavaScript"
   },
   "VS Code": {
