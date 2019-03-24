@@ -1,22 +1,18 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import Img from "gatsby-image"
+import Layout from "../components/layout";
+import Img from "gatsby-image";
 
 export default ({ data }) => {
   return (
     <Layout description="Image test">
-      
-      <h2>
-        Images
-      </h2>
+      <h2>Images</h2>
 
       <Img fixed={data.file.childImageSharp.fixed} />
-
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query {
@@ -30,4 +26,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

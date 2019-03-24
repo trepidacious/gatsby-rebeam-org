@@ -1,44 +1,38 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Layout from "../components/layout"
+import Layout from "../components/layout";
 import { Segment, Label } from "semantic-ui-react";
-import BlogTag from "../components/blog-tag"
+import BlogTag from "../components/blog-tag";
 
 export default ({ data }) => {
   return (
-    <Layout noBlogList description="Rebeam blog - Scala, tree data system, notes" keywords="Scala, React, Tree, Blog">
-      
-      <h2>
-        Recent Entries
-      </h2>
+    <Layout
+      noBlogList
+      description="Rebeam blog - Scala, tree data system, notes"
+      keywords="Scala, React, Tree, Blog"
+    >
+      <h2>Recent Entries</h2>
 
       {data.allMarkdownRemark.edges.map(({ node }) => (
-
         <Segment vertical key={node.id}>
           <h3>
-            <Link to={node.fields.slug}>
-              {node.frontmatter.title}
-            </Link> 
+            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
           </h3>
           <div>
-            <p>
-              {node.frontmatter.description}
-            </p>
+            <p>{node.frontmatter.description}</p>
             <p>
               <Label>{node.frontmatter.date}</Label>
-              {node.frontmatter.tags.map( (tag) => (
-                <BlogTag key={tag} tag={tag}/>
+              {node.frontmatter.tags.map(tag => (
+                <BlogTag key={tag} tag={tag} />
               ))}
             </p>
           </div>
         </Segment>
-
       ))}
-
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query {
@@ -49,8 +43,8 @@ export const query = graphql`
           id
           frontmatter {
             title
-            date(formatString: "YYYY-MM-DD"),
-            description,
+            date(formatString: "YYYY-MM-DD")
+            description
             tags
           }
           fields {
@@ -61,5 +55,4 @@ export const query = graphql`
       }
     }
   }
-`
-
+`;
