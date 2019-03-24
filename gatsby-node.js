@@ -13,6 +13,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
+// Make blog pages
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
@@ -43,6 +44,7 @@ exports.createPages = ({ graphql, actions }) => {
   })
 }
 
+// Configure for Semantic-UI
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
