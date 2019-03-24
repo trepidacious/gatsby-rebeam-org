@@ -81,7 +81,7 @@ Done in 0.89s.
 
 ### Format before committing to Git
 
-Using a [pre-commit hook](https://prettier.io/docs/en/precommit.html) allows us to ensure we only ever commit properly-formatted code. I used [option 1](https://prettier.io/docs/en/precommit.html#option-1-lint-staged-https-githubcom-okonet-lint-staged).
+Using a [pre-commit hook](https://prettier.io/docs/en/precommit.html) allows us to ensure we only ever commit properly-formatted code. I used [option 1](https://prettier.io/docs/en/precommit.html#option-1-lint-staged-https-githubcom-okonet-lint-staged), this is also used in the [create-react-app docs](https://facebook.github.io/create-react-app/docs/setting-up-your-editor#formatting-code-automatically).
 
 First install `lint-staged` and `husky`:
 
@@ -103,4 +103,8 @@ Then configure in `package.json` - we'll just run on `.js` and `.json` files for
   }
 }
 ```
+
+This will now run when you commit changes - this works from git command line, VS Code or the Github desktop client.
+
+In VS Code you can see the file update in the editor when you commit, if you want to check before pushing.
 
