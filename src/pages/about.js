@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import SmartLink from "../components/smart-link"
+import { graphql } from 'gatsby'
 
 export default ({ data }) => (
   <Layout>
