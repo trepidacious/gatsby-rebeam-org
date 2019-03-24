@@ -28,7 +28,7 @@ const metadata = {
     url: "https://www.scala-lang.org/"
   },
   Prettier: {
-    color: "yellow",
+    color: "orange",
     url: "https://prettier.io/"
   },
   Javascript: {
@@ -36,7 +36,7 @@ const metadata = {
     url: "https://en.wikipedia.org/wiki/JavaScript"
   },
   "VS Code": {
-    color: "violet",
+    color: "blue",
     url: "https://code.visualstudio.com/"
   },
   Git: {
