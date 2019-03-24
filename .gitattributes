@@ -1,0 +1,11 @@
+# Nothing is ever treated as text. This avoids ever introducing CRLF line endings.
+# You are responsible for ensuring files use LF endings.
+# Using CRLF produces meaningless changes in git, and can mask real changes or lose history.
+# All reasonable editors and tools will work with LF, so the original reason for this feature
+# is obsolete - even Notepad is catching up here!
+# Specifically, this has a pattern "*" matching all files, then "-text" unsets the "text" attribute
+# on all files. This tells Git not to attempt any end-of-line conversion upon checkin or checkout.
+# In theory if really needed, additional more specific patterns could be added on later lines
+# to enable text mangling for some file extensions, but only if needed by a truly horrific Windows tool?
+# See https://git-scm.com/docs/gitattributes for details.
+* -text
