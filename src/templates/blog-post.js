@@ -63,7 +63,7 @@ export default ({ data }) => {
 
         <p>{post.frontmatter.description}</p>
         <p>
-          <Label>{post.frontmatter.date}</Label>
+          <Label basic>{post.frontmatter.date}</Label>
           {post.frontmatter.tags.map(tag => (
             <BlogTag key={tag} tag={tag} />
           ))}

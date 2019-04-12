@@ -32,12 +32,12 @@ const BlogList = ({ description, keywords, children }) => (
         <List relaxed="very" size="tiny">
           {data.allMarkdownRemark.edges.map(({ node }) => (
             <List.Item key={node.id}>
-              <List.Icon
-                name="code"
+              {/* <List.Icon
+                name="envelope open outline"
                 size="large"
                 verticalAlign="middle"
                 color="grey"
-              />
+              /> */}
 
               <List.Content>
                 <List.Header as={Link} to={node.fields.slug}>

@@ -87,7 +87,7 @@
 
 @olive            : #B5CC18;
 
-@green            : rgb(50, 143, 72);  //Darken green a little to match blue
+@green            : rgb(35, 102, 36);  //Darken green a little to match blue
 
 // @teal             : rgb(0, 129, 123);
 @teal             : darken(@themeCyan, 12);
@@ -101,8 +101,8 @@
 @purple           : #A333C8;
 // @purple           : darken(@themePurple, 17);
 
-@pink             : #E03997;
-@brown            : #A5673F;
+@pink             : rgb(177, 44, 119);  //Darken a little to match blue
+@brown            : rgb(75, 59, 48);
 @grey             : #767676;
 @black            : @themeDarkGrey;//#1B1C1D;
 

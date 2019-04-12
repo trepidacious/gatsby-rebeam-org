@@ -37,6 +37,8 @@ https://coolors.co/ec6b6b-16e6e6-ffc400-ad82f9-0267c1
 
 https://coolors.co/ec6b6b-16e6e6-ffc400-ad82f9-4790d1
 
+https://coolors.co/ec6b6b-16e6e6-ffc400-ad82f9-346999
+
 ### More
 
 https://coolors.co/9fb1bc-465775-ffffff-db5461-2e4057

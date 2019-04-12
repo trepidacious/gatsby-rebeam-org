@@ -12,11 +12,11 @@ const metadata = {
     url: "https://www.gatsbyjs.org/"
   },
   "Semantic UI": {
-    color: "blue",
+    color: "purple", //blue
     url: "https://react.semantic-ui.com/"
   },
   Netlify: {
-    color: "teal",
+    color: "blue", //"teal",
     url: "https://www.netlify.com/"
   },
   "Prism.js": {
@@ -28,11 +28,11 @@ const metadata = {
     url: "https://www.scala-lang.org/"
   },
   Prettier: {
-    color: "orange",
+    color: "green", //"orange",
     url: "https://prettier.io/"
   },
   Javascript: {
-    color: "teal",
+    color: "brown", //"teal",
     url: "https://en.wikipedia.org/wiki/JavaScript"
   },
   "VS Code": {
@@ -47,16 +47,16 @@ const metadata = {
 
 const colors = [
   "red",
-  "orange",
+  // "orange",
   // 'yellow',
-  "olive",
+  // "olive",
   "green",
-  "teal",
+  // "teal",
   "blue",
   "violet",
-  "purple"
-  // 'pink',
-  // 'brown',
+  "purple",
+  "pink",
+  "brown"
 ];
 
 function hashString(s) {
@@ -79,6 +79,7 @@ export default ({ tag }) => {
     if (isAbsoluteURL(url)) {
       return (
         <Label
+          basic
           color={m.color}
           as="a"
           href={m.url}
@@ -90,13 +91,17 @@ export default ({ tag }) => {
       );
     } else {
       return (
-        <Label color={m.color} as={Link} to={m.url}>
+        <Label basic color={m.color} as={Link} to={m.url}>
           {tag}
         </Label>
       );
     }
   } else {
     const color = colors[Math.abs(hashString(tag)) % colors.length];
-    return <Label color={color}>{tag}</Label>;
+    return (
+      <Label basic color={color}>
+        {tag}
+      </Label>
+    );
   }
 };

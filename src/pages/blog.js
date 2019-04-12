@@ -22,7 +22,7 @@ export default ({ data }) => {
           <div>
             <p>{node.frontmatter.description}</p>
             <p>
-              <Label>{node.frontmatter.date}</Label>
+              <Label basic>{node.frontmatter.date}</Label>
               {node.frontmatter.tags.map(tag => (
                 <BlogTag key={tag} tag={tag} />
               ))}
