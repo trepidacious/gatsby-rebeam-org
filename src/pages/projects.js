@@ -6,7 +6,7 @@ import { Icon } from "semantic-ui-react";
 export default () => {
   return (
     <Layout
-      description="Rebeam blog - Scala, tree data system, notes"
+      description="Rebeam project list"
       keywords="Scala, React, Tree, Blog"
     >
       <h2>Projects</h2>

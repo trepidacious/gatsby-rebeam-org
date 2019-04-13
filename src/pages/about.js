@@ -4,7 +4,7 @@ import SmartLink from "../components/smart-link";
 import { graphql } from "gatsby";
 
 export default ({ data }) => (
-  <Layout>
+  <Layout description="About the site">
     <h2>About rebeam.org</h2>
     <p>
       rebeam.org is hosted on{" "}
