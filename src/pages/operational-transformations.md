@@ -1,5 +1,5 @@
 ---
-title: "Operational Transforms"
+title: "Operational Transformations"
 date: "2019-04-21"
 tags: ["OT", "Scala"]
 description: "Notes on operational transformations for server-client concurrency"
