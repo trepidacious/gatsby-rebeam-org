@@ -7,3 +7,5 @@
 </p>
 
 Gatsby website for rebeam.org
+
+To run, install yarn itself, then `yarn install`, `yarn develop`.
