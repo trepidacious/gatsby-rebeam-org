@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Img from "gatsby-image";
 
-export default ({ data }) => {
+export default ({ data }: {data: any}) => {
   return (
     <Layout description="Image test">
       <h2>Images</h2>

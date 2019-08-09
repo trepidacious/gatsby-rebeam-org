@@ -11,7 +11,7 @@ import { Link } from "gatsby";
  */
 const absoluteRegex = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
 
-export function isAbsoluteURL(href) {
+export function isAbsoluteURL(href: string) {
   return (
     absoluteRegex.test(href) ||
     href.startsWith("/static/") ||
@@ -21,7 +21,7 @@ export function isAbsoluteURL(href) {
   );
 }
 
-export default ({ href, children }) => {
+const SmartLink: React.FunctionComponent<{href: string}> = ({ href, children }) => {
   // Use a plain link in a new tab for absolute urls, for /static content, and for images
   if (isAbsoluteURL(href)) {
     return (
@@ -35,3 +35,5 @@ export default ({ href, children }) => {
     return <Link to={href}>{children}</Link>;
   }
 };
+
+export default SmartLink;

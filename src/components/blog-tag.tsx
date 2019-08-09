@@ -1,51 +1,51 @@
 import React from "react";
-import { isAbsoluteURL } from "../components/smart-link";
-import { Label } from "semantic-ui-react";
+import { isAbsoluteURL } from "./smart-link";
+import { Label, SemanticCOLORS } from "semantic-ui-react";
 import { Link } from "gatsby";
 
 /**
  * Known tags get a custom color and url
  */
-const metadata = {
-  Gatsby: {
+const metadata: Record<string, {color: SemanticCOLORS, url: string}> = {
+  "Gatsby": {
     color: "violet",
-    url: "https://www.gatsbyjs.org/"
+    url: "https://www.gatsbyjs.org/",
   },
   "Semantic UI": {
-    color: "purple", //blue
-    url: "https://react.semantic-ui.com/"
+    color: "purple",
+    url: "https://react.semantic-ui.com/",
   },
-  Netlify: {
-    color: "blue", //"teal",
-    url: "https://www.netlify.com/"
+  "Netlify": {
+    color: "blue",
+    url: "https://www.netlify.com/",
   },
   "Prism.js": {
     color: "grey",
-    url: "https://prismjs.com/"
+    url: "https://prismjs.com/",
   },
-  Scala: {
+  "Scala": {
     color: "red",
-    url: "https://www.scala-lang.org/"
+    url: "https://www.scala-lang.org/",
   },
-  Prettier: {
-    color: "green", //"orange",
-    url: "https://prettier.io/"
+  "Prettier": {
+    color: "green",
+    url: "https://prettier.io/",
   },
-  Javascript: {
-    color: "brown", //"teal",
-    url: "https://en.wikipedia.org/wiki/JavaScript"
+  "Javascript": {
+    color: "brown",
+    url: "https://en.wikipedia.org/wiki/JavaScript",
   },
   "VS Code": {
     color: "blue",
-    url: "https://code.visualstudio.com/"
+    url: "https://code.visualstudio.com/",
   },
-  Git: {
+  "Git": {
     color: "red",
-    url: "https://git-scm.com/"
-  }
+    url: "https://git-scm.com/",
+  },
 };
 
-const colors = [
+const colors: SemanticCOLORS[] = [
   "red",
   // "orange",
   // 'yellow',
@@ -56,23 +56,27 @@ const colors = [
   "violet",
   "purple",
   "pink",
-  "brown"
+  "brown",
 ];
 
-function hashString(s) {
-  var hash = 0,
-    i,
-    chr;
-  if (s.length === 0) return hash;
+function hashString(s: string) {
+  let hash = 0;
+  let i;
+  let chr;
+  if (s.length === 0) {
+    return hash;
+  }
   for (i = 0; i < s.length; i++) {
     chr = s.charCodeAt(i);
+    // tslint:disable-next-line: no-bitwise
     hash = (hash << 5) - hash + chr;
+    // tslint:disable-next-line: no-bitwise
     hash |= 0; // Convert to 32bit integer
   }
   return hash;
 }
 
-export default ({ tag }) => {
+const BlogTag: React.FunctionComponent<{tag: string}> = ({ tag }) => {
   const m = metadata[tag];
   if (m) {
     const url = m.url;
@@ -105,3 +109,5 @@ export default ({ tag }) => {
     );
   }
 };
+
+export default BlogTag;

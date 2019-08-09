@@ -2,7 +2,7 @@ import React from "react";
 
 import logo from "../images/icons/icon-small.svg";
 
-export default ({ size }) => (
+export default () => (
   <img
     src={logo}
     alt="Logo"

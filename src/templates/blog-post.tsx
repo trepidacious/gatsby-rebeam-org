@@ -6,24 +6,24 @@ import { List, Icon, Label, Divider, Message, Table } from "semantic-ui-react";
 import SmartLink from "../components/smart-link";
 import BlogTag from "../components/blog-tag";
 
-const SemanticOL = ({ children }) => (
+const SemanticOL: React.FunctionComponent = ({ children }) => (
   <List relaxed ordered as="ol">
     {children}
   </List>
 );
-const SemanticUL = ({ children }) => (
+const SemanticUL: React.FunctionComponent = ({ children }) => (
   <List relaxed bulleted as="ul">
     {children}
   </List>
 );
-const SemanticLI = ({ children }) => <List.Item as="li">{children}</List.Item>;
-const MessageInfo = ({ children }) => (
+const SemanticLI: React.FunctionComponent = ({ children }) => <List.Item as="li">{children}</List.Item>;
+const MessageInfo: React.FunctionComponent = ({ children }) => (
   <Message icon>
     <Icon name="quote left" color="black" />
     <Message.Content>{children}</Message.Content>
   </Message>
 );
-const CustomTable = ({ children }) => (
+const CustomTable: React.FunctionComponent = ({ children }) => (
   <Table celled color="violet">
     {children}
   </Table>
@@ -50,11 +50,11 @@ const renderAst = new rehypeReact({
     thead: Table.Header,
     tr: Table.Row,
     th: Table.HeaderCell,
-    td: Table.Cell
-  }
+    td: Table.Cell,
+  },
 }).Compiler;
 
-export default ({ data }) => {
+const BlogPost: React.FunctionComponent<{data: any}> = ({ data }) => {
   const post = data.markdownRemark;
   return (
     <Layout description={post.frontmatter.title}>
@@ -64,7 +64,7 @@ export default ({ data }) => {
         <p>{post.frontmatter.description}</p>
         <p>
           <Label basic>{post.frontmatter.date}</Label>
-          {post.frontmatter.tags.map(tag => (
+          {post.frontmatter.tags.map((tag: any) => (
             <BlogTag key={tag} tag={tag} />
           ))}
         </p>
@@ -72,10 +72,10 @@ export default ({ data }) => {
 
         {renderAst(post.htmlAst)}
 
-        {/* 
+        {/*
           Alternative code to use post.html directly. To use
           this, change `htmlAst` field in graphQL query to just `html`
-          <div dangerouslySetInnerHTML={{ __html: post.html }} /> 
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
         */}
       </div>
     </Layout>
@@ -96,3 +96,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BlogPost;

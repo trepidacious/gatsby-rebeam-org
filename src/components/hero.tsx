@@ -4,7 +4,7 @@ import logo from "../images/icons/icon.svg";
 import hero from "../images/hero.svg";
 import { Container, Grid } from "semantic-ui-react";
 
-export default ({ title, subtitle }) => (
+const Hero: React.FunctionComponent<{title: string, subtitle: string}> = ({ title, subtitle }) => (
   <div className="hero">
     <img
       className="hero-svg-bg"
@@ -35,5 +35,6 @@ export default ({ title, subtitle }) => (
       </Grid>
     </Container>
   </div>
-  // <img src={logo} alt='Logo' width='40px' height='40px' style={{top: '10px', position: 'relative', marginLeft: '8px', marginRight: '8px'}}/>
 );
+
+export default Hero;

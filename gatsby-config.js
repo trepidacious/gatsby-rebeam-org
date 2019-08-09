@@ -22,6 +22,8 @@ module.exports = {
     "gatsby-plugin-offline",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-less",
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-tslint",
     {
       resolve: "gatsby-plugin-html-attributes",
       options: {
