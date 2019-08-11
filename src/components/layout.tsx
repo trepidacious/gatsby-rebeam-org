@@ -6,8 +6,6 @@ import React, { ReactNode } from "react";
 import Helmet from "react-helmet";
 import { Container, Grid, Segment } from "semantic-ui-react";
 
-import "semantic-ui-less/semantic.less";
-
 // See https://css-tricks.com/couple-takes-sticky-footer/ for footer layout, requires this
 // component to be in a 100% height parent, see site.overrides for styles to achieve this
 const Layout: React.FunctionComponent<

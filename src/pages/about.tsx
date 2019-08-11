@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import SmartLink from "../components/smart-link";
 import { graphql } from "gatsby";
 
-export default ({ data }) => (
+export default () => (
   <Layout description="About the site">
     <h2>About rebeam.org</h2>
     <p>
