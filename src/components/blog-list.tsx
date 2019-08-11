@@ -23,14 +23,14 @@ const query = graphql`
   }
 `;
 
-const BlogList = ({ description, keywords, children }) => (
+const BlogList = () => (
   <StaticQuery
     query={query}
-    render={data => (
+    render={(data) => (
       <>
         <h3 style={{ paddingTop: "7px" }}>Entries</h3>
         <List relaxed="very" size="tiny">
-          {data.allMarkdownRemark.edges.map(({ node }) => (
+          {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
             <List.Item key={node.id}>
               {/* <List.Icon
                 name="envelope open outline"

@@ -1,17 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import BlogList from "./blog-list";
+import { graphql, StaticQuery } from "gatsby";
+import Nav from "./header";
+// import PropTypes from "prop-types";
+import React, { ReactNode } from "react";
 import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
 import { Container, Grid, Segment } from "semantic-ui-react";
 
-import Nav from "./header";
-import BlogList from "./blog-list";
-
-import "semantic-ui-less/semantic.less";
-
-//See https://css-tricks.com/couple-takes-sticky-footer/ for footer layout, requires this
-//component to be in a 100% height parent, see site.overrides for styles to achieve this
-const Layout = ({ noBlogList, hero, description, keywords, children }) => (
+// See https://css-tricks.com/couple-takes-sticky-footer/ for footer layout, requires this
+// component to be in a 100% height parent, see site.overrides for styles to achieve this
+const Layout: React.FunctionComponent<
+  { noBlogList?: boolean, hero?: ReactNode, description?: string, keywords?: string, children?: ReactNode }
+> = ({ noBlogList, hero, description, keywords, children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -22,17 +21,17 @@ const Layout = ({ noBlogList, hero, description, keywords, children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div style={{ display: "flex", height: "100%", flexDirection: "column" }}>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
             { name: "description", content: description },
-            { name: "keywords", content: keywords }
+            { name: "keywords", content: keywords },
           ]}
         />
 
-        <Nav siteTitle={data.site.siteMetadata.title} />
+        <Nav/>
 
         <div style={{ flex: "1 0 auto" }}>
           {hero}
@@ -76,10 +75,10 @@ const Layout = ({ noBlogList, hero, description, keywords, children }) => (
   />
 );
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  description: PropTypes.string,
-  keywords: PropTypes.string
-};
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+//   description: PropTypes.string,
+//   keywords: PropTypes.string,
+// };
 
 export default Layout;

@@ -1,16 +1,23 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Container, Menu, Icon, Dropdown } from "semantic-ui-react";
-import Logo from "./logo.js";
-import LogoMobile from "./logo-mobile.js";
+import { Container, Menu, Icon, Dropdown, SemanticCOLORS } from "semantic-ui-react";
+import Logo from "./logo";
+import LogoMobile from "./logo-mobile";
 
-const LinkedDropdownItem = ({ children, ...props }) => (
+interface LinkData {
+  name?: string;
+  color?: SemanticCOLORS;
+  to: string;
+  key?: string;
+}
+
+const LinkedDropdownItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (
   <Dropdown.Item as={Link} activeClassName="active" {...props}>
     {children}
   </Dropdown.Item>
 );
 
-const LinkedMenuItem = ({ children, ...props }) => (
+const LinkedMenuItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (
   <Menu.Item
     as={Link}
     activeClassName="active-border"
@@ -35,7 +42,7 @@ const githubIconLink = (
   </Menu.Menu>
 );
 
-const MobileHeader = ({ siteTitle }) => (
+const MobileHeader = () => (
   <Menu
     className="mobile-header theme-dark-grey"
     fixed="top"
@@ -62,7 +69,7 @@ const MobileHeader = ({ siteTitle }) => (
   </Menu>
 );
 
-const DesktopHeader = ({ siteTitle }) => (
+const DesktopHeader = () => (
   <Menu
     className="desktop-header theme-dark-grey"
     fixed="top"
@@ -72,7 +79,6 @@ const DesktopHeader = ({ siteTitle }) => (
     <Container>
       <LinkedMenuItem color="violet" to="/" key="rebeam">
         <Logo />
-        {/* {siteTitle} */}
         home
       </LinkedMenuItem>
 
@@ -87,33 +93,33 @@ const DesktopHeader = ({ siteTitle }) => (
   </Menu>
 );
 
-const links = [
+const links: LinkData[] = [
   {
     name: "home",
     to: "/",
-    color: "violet"
+    color: "violet",
   },
   {
     name: "projects",
     to: "/projects",
-    color: "teal"
+    color: "teal",
   },
   {
     name: "blog",
     to: "/blog",
-    color: "yellow"
+    color: "yellow",
   },
   {
     name: "about",
     to: "/about",
-    color: "red"
-  }
+    color: "red",
+  },
 ];
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <>
-    <MobileHeader siteTitle={siteTitle} />
-    <DesktopHeader siteTitle={siteTitle} />
+    <MobileHeader/>
+    <DesktopHeader/>
   </>
 );
 

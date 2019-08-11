@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import { Segment, Label } from "semantic-ui-react";
 import BlogTag from "../components/blog-tag";
 
-export default ({ data }) => {
+export default ({ data }: {data: any}) => {
   return (
     <Layout
       noBlogList
@@ -14,7 +14,7 @@ export default ({ data }) => {
     >
       <h2>Recent Entries</h2>
 
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
         <Segment vertical key={node.id}>
           <h3>
             <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
@@ -23,7 +23,7 @@ export default ({ data }) => {
             <p>{node.frontmatter.description}</p>
             <p>
               <Label basic>{node.frontmatter.date}</Label>
-              {node.frontmatter.tags.map(tag => (
+              {node.frontmatter.tags.map((tag: any) => (
                 <BlogTag key={tag} tag={tag} />
               ))}
             </p>
