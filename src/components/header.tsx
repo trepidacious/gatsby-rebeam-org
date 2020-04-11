@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Container, Menu, Icon, Dropdown, SemanticCOLORS } from "semantic-ui-react";
 import Logo from "./logo";
-import LogoMobile from "./logo-mobile";
+import GithubLogo from "./github-logo";
+
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavItem from 'react-bootstrap/NavItem';
+import NavLink from 'react-bootstrap/NavLink';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Container from 'react-bootstrap/Container';
+// import Button from 'react-bootstrap/Button';
+// import Form from 'react-bootstrap/Form';
+// import FormControl from 'react-bootstrap/FormControl';
 
 interface LinkData {
   name?: string;
@@ -11,86 +20,96 @@ interface LinkData {
   key?: string;
 }
 
-const LinkedDropdownItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (
-  <Dropdown.Item as={Link} activeClassName="active" {...props}>
+const LinkedDropdownItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (  
+  <Dropdown.Item as={Link} {...props}>
     {children}
   </Dropdown.Item>
 );
 
 const LinkedMenuItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (
-  <Menu.Item
+  <Nav.Link
     as={Link}
-    activeClassName="active-border"
-    className="with-border"
+    activeClassName="active"
     {...props}
   >
     {children}
-  </Menu.Item>
+  </Nav.Link>
 );
 
 const githubIconLink = (
-  <Menu.Menu position="right">
-    <Menu.Item
-      as="a"
-      href="https://github.com/trepidacious/gatsby-rebeam-org"
-      title="Github"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon name="github" link inverted size="large" fitted />
-    </Menu.Item>
-  </Menu.Menu>
+  <Nav>
+    <Nav.Link href="http://github.com/trepidacious/tree-react" className="github-nav" target="_blank" rel="noopener noreferrer">
+      <GithubLogo/>
+    </Nav.Link>
+  </Nav>
 );
 
 const MobileHeader = () => (
-  <Menu
-    className="mobile-header theme-dark-grey"
-    fixed="top"
-    inverted
-    size="huge"
-  >
-    <Container>
-      <Link to="/" key="rebeam">
-        <LogoMobile />
-      </Link>
 
-      <Dropdown item text="rebeam" floating pointing>
-        <Dropdown.Menu>
+  <Navbar bg="dark" variant="dark" fixed="top" className="mobile-header">
+    <Container>
+
+      <Nav className="mr-auto">
+
+        <Dropdown as={NavItem}>
+          <Dropdown.Toggle id="nav-dropdown-toggle" as={NavLink}>
+            <Logo/>
+            rebeam
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {links.map(({ name, color, to }) => (
+              <LinkedDropdownItem color={color} to={to} key={name}>
+                {name}
+              </LinkedDropdownItem>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
+
+        {/* <NavDropdown title="rebeam" id="nav-dropdown">
           {links.map(({ name, color, to }) => (
-            <LinkedDropdownItem color={color} to={to} key={name}>
+            <LinkedDropdownItem color={color} to={to} key={name} eventKey={name}>
               {name}
             </LinkedDropdownItem>
           ))}
-        </Dropdown.Menu>
-      </Dropdown>
+        </NavDropdown> */}
+      </Nav>
 
       {githubIconLink}
+
     </Container>
-  </Menu>
+  </Navbar>   
 );
 
 const DesktopHeader = () => (
-  <Menu
-    className="desktop-header theme-dark-grey"
-    fixed="top"
-    inverted
-    size="huge"
-  >
+  <Navbar bg="dark" variant="dark" fixed="top" className="desktop-header">
     <Container>
-      <LinkedMenuItem color="violet" to="/" key="rebeam">
-        <Logo />
-        home
-      </LinkedMenuItem>
 
-      {links.slice(1).map(({ name, color, to }) => (
-        <LinkedMenuItem color={color} to={to} key={name}>
-          {name}
-        </LinkedMenuItem>
-      ))}
+      <Nav className="mr-auto nav-underlined">
+        {
+          links.slice(0, 1).map(({ name, color, to }) => (
+            <LinkedMenuItem color={color} to={to} key={name}>
+              <Logo />
+              rebeam
+            </LinkedMenuItem>
+          ))
+        }
+        {
+          links.slice(1).map(({ name, color, to }) => (
+            <LinkedMenuItem color={color} to={to} key={name}>
+              {name}
+            </LinkedMenuItem>
+          ))
+        }
+      </Nav>
 
       {githubIconLink}
+
+      {/* <Form inline>
+        <FormControl type="text" placeholder="search" className="mr-sm-2" />
+        <Button variant="outline-info">search</Button>
+      </Form> */}
     </Container>
-  </Menu>
+  </Navbar>     
 );
 
 const links: LinkData[] = [
