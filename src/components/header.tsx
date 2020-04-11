@@ -9,13 +9,11 @@ import NavItem from 'react-bootstrap/NavItem';
 import NavLink from 'react-bootstrap/NavLink';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
-// import FormControl from 'react-bootstrap/FormControl';
+import { Color } from "./colors";
 
 interface LinkData {
   name?: string;
-  color?: SemanticCOLORS;
+  color?: Color;
   to: string;
   key?: string;
 }
@@ -30,6 +28,7 @@ const LinkedMenuItem: React.FunctionComponent<LinkData> = ({ children, ...props 
   <Nav.Link
     as={Link}
     activeClassName="active"
+    className={props.color}
     {...props}
   >
     {children}
@@ -116,22 +115,22 @@ const links: LinkData[] = [
   {
     name: "home",
     to: "/",
-    color: "violet",
+    color: "red",
   },
   {
     name: "projects",
     to: "/projects",
-    color: "teal",
+    color: "yellow",
   },
   {
     name: "blog",
     to: "/blog",
-    color: "yellow",
+    color: "teal",
   },
   {
     name: "about",
     to: "/about",
-    color: "red",
+    color: "violet",
   },
 ];
 
