@@ -31,8 +31,20 @@ a.nav-link {
   padding-bottom: 1rem;
 }
 
-.navbar-nav.nav-underlined .nav-link.active {
-  border-bottom: 0.25rem solid #5bc0eb;
+.navbar-nav.nav-underlined .nav-link.active.violet{
+  border-bottom: 0.25rem solid #EC6B6B;
+  padding-bottom: 0.75rem;
+}
+.navbar-nav.nav-underlined .nav-link.active.teal{
+  border-bottom: 0.25rem solid #FFC400;
+  padding-bottom: 0.75rem;
+}
+.navbar-nav.nav-underlined .nav-link.active.yellow{
+  border-bottom: 0.25rem solid #16E5E5;
+  padding-bottom: 0.75rem;
+}
+.navbar-nav.nav-underlined .nav-link.active.red {
+  border-bottom: 0.25rem solid #AD82F9;
   padding-bottom: 0.75rem;
 }
 
