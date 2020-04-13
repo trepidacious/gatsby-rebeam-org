@@ -35,7 +35,7 @@ const Layout: React.FunctionComponent<
         <div style={{ flex: "1 0 auto" }}>
           {hero}
 
-          <Container style={{ marginTop: hero ? "32px" : "92px" }}>
+          <Container style={{ marginTop: hero ? "3rem" : "7rem", paddingBottom: "6rem" }}>
             <Row xs={12}>
               <Col
                 // At sizes under medium, blog list is hidden so we use all columns
