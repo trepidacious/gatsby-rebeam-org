@@ -6,9 +6,10 @@ import SmartLink from "../components/smart-link";
 import BlogTag from "../components/blog-tag";
 import DateTag from "../components/date-tag";
 import { Table, Alert, Badge } from "react-bootstrap";
+import * as Unicons from "@iconscout/react-unicons";
 
 const MessageInfo: React.FunctionComponent = ({ children }) => (
-  <Alert variant="secondary">
+  <Alert variant="secondary" className="markdown-message">
     {/* <Icon name="quote left" color="black" /> */}
     {children}
   </Alert>
@@ -20,12 +21,16 @@ const CustomTable: React.FunctionComponent = ({ children }) => (
   </Table>
 );
 
+const VioletHeart: React.FunctionComponent = ({ }) => (
+  <Unicons.UilHeart size="20" color="#AD82F9" />
+);
+
 // This will render the htmlAst contents of a post
 // using rehype, allowing us to replace elements with
 // react components - we currently use this to style
 // lists etc. as Semantic components
 // See https://using-remark.gatsbyjs.org/custom-components/
-// TODO restore icon, get lists spaced better
+// TODO restore icon
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
@@ -33,8 +38,9 @@ const renderAst = new rehypeReact({
     badge: Badge,
     a: SmartLink,
     blockquote: MessageInfo,
-    message: Alert,
+    alert: Alert,
     table: CustomTable,
+    heart: VioletHeart
   },
 }).Compiler;
 
