@@ -15,6 +15,7 @@
     "lint": "tslint --project ."
   },
   "dependencies": {
+    "@iconscout/react-unicons": "^1.0.1",
     "@types/react-helmet": "^5.0.9",
     "@types/rehype-react": "^3.1.0",
     "bootstrap": "^4.4.1",

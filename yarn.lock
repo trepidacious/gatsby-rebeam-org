@@ -757,6 +757,13 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
+"@iconscout/react-unicons@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@iconscout/react-unicons/-/react-unicons-1.0.1.tgz#b5309fac3b0cc27014da1e48edf29dd3d54a672f"
+  integrity sha512-RyXHKUH28rpiT5mD4smXDLNgnpAAztCBZMafuSDZcaVhV5zt90j/AZyvgS15ayWdaxmqNCI4He9w7IIDT8kmCA==
+  dependencies:
+    react ">=15.0.0 <17.0.0"
+
 "@jimp/bmp@^0.6.4":
   version "0.6.4"
   resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.6.4.tgz#0f4b94486e979d82c83e1e87cd00b756afb26e49"
@@ -9329,6 +9336,15 @@ react-transition-group@^4.0.0:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
+"react@>=15.0.0 <17.0.0":
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
+  integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
     prop-types "^15.6.2"
 
 react@^16.5.1, react@^16.8.4:

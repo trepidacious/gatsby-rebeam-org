@@ -13,6 +13,8 @@ Out of the box, using the Semantic UI styles will handle simple elements in mark
 
 The initial setup is covered by the docs on [remark custom components](https://using-remark.gatsbyjs.org/custom-components/). We will tweak this to render some Semantic UI components:
 
+<Alert variant="info">Note that since this entry was written, we've updated rebeam.org to use react-bootstrap. As a result, while the instructions are correct, the results shown use react-bootstrap rather than Semantic-UI.</Alert>
+
 ### Setup
 
 1. Install [rehype-react](https://github.com/rhysd/rehype-react):
@@ -85,7 +87,9 @@ The initial setup is covered by the docs on [remark custom components](https://u
   ```markdown
     *Made with <icon name='heart' color='violet'></icon> by rebeam.*
   ```
-  Which should produce the following rather clich&eacute; result: *Made with <icon name='heart' color='violet'></icon> by rebeam.*
+  Which should produce the following rather clich&eacute; result: 
+  
+  *Made with <heart></heart> by rebeam.*
 
 7. We can also display tables with Semantic:
    
@@ -137,12 +141,10 @@ The initial setup is covered by the docs on [remark custom components](https://u
    > **Nicely formatted blockquotes**  
    > Quote all the things.
 
-   You can still use other types of `Message` directly by registering with `'message': Message`:
+   You can still use other types of component directly, for example here is `Alert` from react-bootstrap. Just register the component directly, e.g. `'alert': Alert`:
 
    ```jsx
-   <message negative=true>**Scary message!**</message>
+   <alert variant="danger">**Scary message!**</alert>
    ```
 
-   Note we need to use `negative=true` rather than the usual plain `negative` because of markdown parsing:
-
-   <message negative=true>**Scary message!**</message>
+   <alert variant="danger">**Scary message!**</alert>
