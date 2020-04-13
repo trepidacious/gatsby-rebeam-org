@@ -125,4 +125,4 @@ There's an excellent tutorial for the [gatsby-remark-prism](https://www.gatsbyjs
 
 ### Smartypants quotes
 
-If you want nice "fancy quotes", correct apostrophe's (I think that's a totally grammatical apostrophe in the right place <icon name="thumbs up outline"></icon>), small - and large -- dashes then add [gatsby-remark-smartypants](https://www.gatsbyjs.org/packages/gatsby-remark-smartypants/).
+If you want nice "fancy quotes", correct apostrophe's (I think that's a totally grammatical apostrophe in the right place...), small - and large -- dashes then add [gatsby-remark-smartypants](https://www.gatsbyjs.org/packages/gatsby-remark-smartypants/).
