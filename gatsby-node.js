@@ -43,14 +43,3 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 }
-
-// Configure for Semantic-UI
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        '../../theme.config$': path.join(__dirname, 'src/semantic/theme.config'),
-      },
-    },
-  });
-};
