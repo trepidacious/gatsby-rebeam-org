@@ -71,10 +71,35 @@ a.nav-link {
   }  
 }
 
+@each $name, $color in $brightColors {
+  .badge-bright-outline-#{$name} {
+    background-color: #fff;
+    border: 2px solid $color;
+    color: $grey;
+    margin-right: 0.25rem;
+  }  
+}
+
 @each $name, $color in $colors {
   .badge-solid-#{$name} {
     background-color: $color;
     color: #fff;
+    margin-right: 0.25rem;
+  }  
+}
+
+@each $name, $color in $brightColors {
+  .badge-theme-#{$name} {
+    background-color: $color;
+    margin-right: 0.25rem;
+  }  
+}
+
+@each $name, $color in $brightColors {
+  .badge-theme-dark-#{$name} {
+    background-color: $themeDarkGrey;
+    color: $color;
+    margin-right: 0.25rem;
   }  
 }
 
@@ -123,4 +148,8 @@ a.nav-link {
 
 li {
   margin-bottom: 1rem;
+}
+
+.card {
+  border: 2px solid rgba(0,0,0,.125);
 }

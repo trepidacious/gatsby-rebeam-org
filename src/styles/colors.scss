@@ -8,8 +8,8 @@ $themeYellow         : #FFC400;
 $themeBrightYellow   : #FFECB2;
 $themeCyan           : #16E6E6;
 $themeBrightCyan     : #8DF7F7;
-$themePurple         : #AD82F9;
-$themeBrightPurple   : #C3A0FF;
+$themeViolet         : #AD82F9;
+$themeBrightViolet   : #C3A0FF;
 
 $themeLightGrey      : #4F5A5A;
 $themeGrey           : #37474F;
@@ -21,11 +21,43 @@ $themeColors: (
   "brightYellow": $themeBrightYellow, 
   "cyan": $themeCyan, 
   "brightCyan": $themeBrightCyan, 
-  "purple": $themePurple, 
-  "brightPurple": $themeBrightPurple, 
+  "violet": $themeViolet, 
+  "brightViolet": $themeBrightViolet, 
   "lightGrey": $themeLightGrey,
   "grey": $themeGrey,
   "darkGrey": $themeDarkGrey
+);
+
+/*-------------------
+     Bright Colors
+--------------------*/
+
+$brightRed            : rgb(255, 179, 179);
+$brightOrange         : rgb(253, 158, 75);
+$brightYellow         : #FFECB2;
+$brightOlive          : #D9E778;
+$brightGreen          : rgb(145, 207, 129);
+$brightCyan           : #8DF7F7;
+$brightBlue           : rgb(127, 192, 253);
+$brightViolet         : rgb(210, 186, 252);
+$brightPurple         : rgb(238, 187, 255);
+$brightPink           : rgb(255, 175, 219);
+$brightBrown          : rgb(211, 192, 172);
+$brightGrey           : #DCDDDE;
+
+$brightColors: (
+  "red": $brightRed, 
+  "orange": $brightOrange, 
+  "yellow": $brightYellow, 
+  "olive": $brightOlive, 
+  "green": $brightGreen, 
+  "cyan": $brightCyan, 
+  "blue": $brightBlue, 
+  "violet": $brightViolet, 
+  "purple": $brightPurple, 
+  "pink": $brightPink, 
+  "brown": $brightBrown, 
+  "grey": $brightGrey
 );
 
 /*-------------------
@@ -46,13 +78,13 @@ $olive            : #B5CC18;
 $green            : rgb(35, 102, 36);  //Darken green a little to match blue
 
 // $teal             : rgb(0, 129, 123);
-$teal             : darken($themeCyan, 12);
+$cyan             : darken($themeCyan, 12);
 
 // $blue             : #2185D0;
 $blue             : #31679b;  //Darken blue a little for clearer links
 
 //$violet           : #6435C9;
-$violet           : darken($themePurple, 17);
+$violet           : darken($themeViolet, 17);
 
 $purple           : #A333C8;
 // $purple           : darken($themePurple, 17);
@@ -68,7 +100,7 @@ $colors: (
   "yellow": $yellow, 
   "olive": $olive, 
   "green": $green, 
-  "teal": $teal, 
+  "cyan": $cyan, 
   "blue": $blue, 
   "violet": $violet, 
   "purple": $purple, 

@@ -4,7 +4,7 @@ export type Color =
   | 'yellow'
   | 'olive'
   | 'green'
-  | 'teal'
+  | 'cyan'
   | 'blue'
   | 'violet'
   | 'purple'
