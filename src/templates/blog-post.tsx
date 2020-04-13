@@ -2,29 +2,20 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import rehypeReact from "rehype-react";
-import { List, Icon, Label, Divider, Message, Table } from "semantic-ui-react";
 import SmartLink from "../components/smart-link";
 import BlogTag from "../components/blog-tag";
+import DateTag from "../components/date-tag";
+import { Table, Alert, Badge } from "react-bootstrap";
 
-const SemanticOL: React.FunctionComponent = ({ children }) => (
-  <List relaxed ordered as="ol">
-    {children}
-  </List>
-);
-const SemanticUL: React.FunctionComponent = ({ children }) => (
-  <List relaxed bulleted as="ul">
-    {children}
-  </List>
-);
-const SemanticLI: React.FunctionComponent = ({ children }) => <List.Item as="li">{children}</List.Item>;
 const MessageInfo: React.FunctionComponent = ({ children }) => (
-  <Message icon>
-    <Icon name="quote left" color="black" />
-    <Message.Content>{children}</Message.Content>
-  </Message>
+  <Alert variant="secondary">
+    {/* <Icon name="quote left" color="black" /> */}
+    {children}
+  </Alert>
 );
+
 const CustomTable: React.FunctionComponent = ({ children }) => (
-  <Table celled color="violet">
+  <Table striped bordered hover color="violet">
     {children}
   </Table>
 );
@@ -34,23 +25,16 @@ const CustomTable: React.FunctionComponent = ({ children }) => (
 // react components - we currently use this to style
 // lists etc. as Semantic components
 // See https://using-remark.gatsbyjs.org/custom-components/
+// TODO restore icon, get lists spaced better
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    ul: SemanticUL,
-    ol: SemanticOL,
-    li: SemanticLI,
-    hr: Divider,
-    icon: Icon,
-    label: Label,
+    // icon: Icon,
+    badge: Badge,
     a: SmartLink,
     blockquote: MessageInfo,
-    message: Message,
+    message: Alert,
     table: CustomTable,
-    thead: Table.Header,
-    tr: Table.Row,
-    th: Table.HeaderCell,
-    td: Table.Cell,
   },
 }).Compiler;
 
@@ -63,20 +47,15 @@ const BlogPost: React.FunctionComponent<{data: any}> = ({ data }) => {
 
         <p>{post.frontmatter.description}</p>
         <p>
-          <Label basic>{post.frontmatter.date}</Label>
+          <DateTag date={post.frontmatter.date}/>
           {post.frontmatter.tags.map((tag: any) => (
             <BlogTag key={tag} tag={tag} />
           ))}
         </p>
-        <Divider />
+        <hr />
 
         {renderAst(post.htmlAst)}
 
-        {/*
-          Alternative code to use post.html directly. To use
-          this, change `htmlAst` field in graphQL query to just `html`
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        */}
       </div>
     </Layout>
   );

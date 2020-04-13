@@ -3,12 +3,7 @@ import { Link } from "gatsby";
 import Logo from "./logo";
 import GithubLogo from "./github-logo";
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavItem from 'react-bootstrap/NavItem';
-import NavLink from 'react-bootstrap/NavLink';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Container from 'react-bootstrap/Container';
+import { Navbar, Nav, NavItem, NavLink, Dropdown, Container } from "react-bootstrap";
 import { Color } from "./colors";
 
 interface LinkData {
@@ -18,7 +13,7 @@ interface LinkData {
   key?: string;
 }
 
-const LinkedDropdownItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (  
+const LinkedDropdownItem: React.FunctionComponent<LinkData> = ({ children, ...props }) => (
   <Dropdown.Item as={Link} {...props}>
     {children}
   </Dropdown.Item>
@@ -37,7 +32,12 @@ const LinkedMenuItem: React.FunctionComponent<LinkData> = ({ children, ...props 
 
 const githubIconLink = (
   <Nav>
-    <Nav.Link href="http://github.com/trepidacious/tree-react" className="github-nav" target="_blank" rel="noopener noreferrer">
+    <Nav.Link
+        href="http://github.com/trepidacious/tree-react"
+        className="github-nav"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
       <GithubLogo/>
     </Nav.Link>
   </Nav>
@@ -76,7 +76,7 @@ const MobileHeader = () => (
       {githubIconLink}
 
     </Container>
-  </Navbar>   
+  </Navbar>
 );
 
 const DesktopHeader = () => (
@@ -108,29 +108,29 @@ const DesktopHeader = () => (
         <Button variant="outline-info">search</Button>
       </Form> */}
     </Container>
-  </Navbar>     
+  </Navbar>
 );
 
 const links: LinkData[] = [
   {
     name: "home",
     to: "/",
-    color: "red",
+    color: "violet",
   },
   {
     name: "projects",
     to: "/projects",
-    color: "yellow",
+    color: "teal",
   },
   {
     name: "blog",
     to: "/blog",
-    color: "teal",
+    color: "yellow",
   },
   {
     name: "about",
     to: "/about",
-    color: "violet",
+    color: "red",
   },
 ];
 

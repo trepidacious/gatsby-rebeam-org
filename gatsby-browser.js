@@ -1,4 +1,4 @@
-import "semantic-ui-less/semantic.less";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./src/styles/global.css"
+import "./src/styles/global.scss"
+import "./src/styles/code.scss"
 

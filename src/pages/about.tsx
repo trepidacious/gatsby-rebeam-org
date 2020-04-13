@@ -5,7 +5,6 @@ import { graphql } from "gatsby";
 
 export default () => (
   <Layout description="About the site">
-    <h2>About rebeam.org</h2>
     <p>
       rebeam.org is hosted on{" "}
       <SmartLink href="https://www.netlify.com/">Netlify</SmartLink>,

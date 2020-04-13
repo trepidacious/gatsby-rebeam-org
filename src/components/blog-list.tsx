@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql, StaticQuery } from "gatsby";
-import { List } from "semantic-ui-react";
+import { Card } from "react-bootstrap";
 
 const query = graphql`
   query {
@@ -28,10 +28,11 @@ const BlogList = () => (
     query={query}
     render={(data) => (
       <>
-        <h3 style={{ paddingTop: "7px" }}>Entries</h3>
-        <List relaxed="very" size="tiny">
+        <Card>
+          {/* <Card.Header>Blog Entries</Card.Header> */}
+
           {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
-            <List.Item key={node.id}>
+            <Card.Body key={node.id}>
               {/* <List.Icon
                 name="envelope open outline"
                 size="large"
@@ -39,20 +40,19 @@ const BlogList = () => (
                 color="grey"
               /> */}
 
-              <List.Content>
-                <List.Header as={Link} to={node.fields.slug}>
-                  {node.frontmatter.title}
-                  {/* <Label basic pointing='left'>{node.frontmatter.date}</Label>  */}
-                </List.Header>
-                <List.Description>
-                  {/* <Label horizontal basic>{node.frontmatter.date}</Label> */}
-                  {/* {node.excerpt.split('<!--end-excerpt-->')[0]} */}
-                  {node.frontmatter.date}
-                </List.Description>
-              </List.Content>
-            </List.Item>
+              <Card.Title as={Link} to={node.fields.slug}>
+                {node.frontmatter.title}
+                {/* <Label basic pointing='left'>{node.frontmatter.date}</Label>  */}
+              </Card.Title>
+              <Card.Text>
+                {/* <Label horizontal basic>{node.frontmatter.date}</Label> */}
+                {/* {node.excerpt.split('<!--end-excerpt-->')[0]} */}
+                {node.frontmatter.date}
+              </Card.Text>
+            </Card.Body>
           ))}
-        </List>
+
+        </Card>
       </>
     )}
   />

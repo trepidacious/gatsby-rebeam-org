@@ -24,6 +24,7 @@ module.exports = {
     "gatsby-plugin-less",
     "gatsby-plugin-typescript",
     "gatsby-plugin-tslint",
+    "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-html-attributes",
       options: {

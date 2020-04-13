@@ -2,8 +2,9 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import { Segment, Label } from "semantic-ui-react";
 import BlogTag from "../components/blog-tag";
+import { Card, CardColumns } from "react-bootstrap";
+import DateTag from "../components/date-tag";
 
 export default ({ data }: {data: any}) => {
   return (
@@ -12,24 +13,27 @@ export default ({ data }: {data: any}) => {
       description="Rebeam blog - Scala, tree data system, notes"
       keywords="Scala, React, Tree, Blog"
     >
-      <h2>Recent Entries</h2>
+      <CardColumns>
+        {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
+          <Card key={node.id}>
+            <Card.Body>
+              <Card.Title>
+                <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+              </Card.Title>
+              <Card.Text>
+                <p>{node.frontmatter.description}</p>
+                <p>
+                  <DateTag date={node.frontmatter.date}/>
+                  {node.frontmatter.tags.map((tag: any) => (
+                    <BlogTag key={tag} tag={tag} />
+                  ))}
+                </p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardColumns>
 
-      {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
-        <Segment vertical key={node.id}>
-          <h3>
-            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-          </h3>
-          <div>
-            <p>{node.frontmatter.description}</p>
-            <p>
-              <Label basic>{node.frontmatter.date}</Label>
-              {node.frontmatter.tags.map((tag: any) => (
-                <BlogTag key={tag} tag={tag} />
-              ))}
-            </p>
-          </div>
-        </Segment>
-      ))}
     </Layout>
   );
 };
