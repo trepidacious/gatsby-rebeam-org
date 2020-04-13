@@ -40,7 +40,7 @@ const renderAst = new rehypeReact({
     blockquote: MessageInfo,
     alert: Alert,
     table: CustomTable,
-    heart: VioletHeart
+    heart: VioletHeart,
   },
 }).Compiler;
 

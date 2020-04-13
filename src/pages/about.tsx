@@ -3,10 +3,13 @@ import Layout from "../components/layout";
 import SmartLink from "../components/smart-link";
 import { graphql } from "gatsby";
 
+// Disable max line length - long lines are much clearer in the JSX here
+/* tslint:disable:max-line-length */
+
 export default () => (
   <Layout description="About the site">
     <p>
-      rebeam.org is hosted on <SmartLink href="https://www.netlify.com/">Netlify</SmartLink>, automatically deploying from <SmartLink href="https://github.com/trepidacious/gatsby-rebeam-org">Github</SmartLink>. 
+      rebeam.org is hosted on <SmartLink href="https://www.netlify.com/">Netlify</SmartLink>, automatically deploying from <SmartLink href="https://github.com/trepidacious/gatsby-rebeam-org">Github</SmartLink>.
     </p>
     <p>
       It is built as a static site by <SmartLink href="https://www.gatsbyjs.org/">Gatsby</SmartLink> and several Gatsby plugins, using <SmartLink href="https://getbootstrap.com/">Bootstrap</SmartLink> styling via <SmartLink href="https://react-bootstrap.github.io/">React-Bootstrap</SmartLink> (previously we used <SmartLink href="https://semantic-ui.com/">Semantic UI</SmartLink> via <SmartLink href="https://react.semantic-ui.com/">React Semantic UI</SmartLink>).
@@ -18,7 +21,7 @@ export default () => (
       Code samples are highlighted using <SmartLink href="https://prismjs.com/">Prism</SmartLink>.
     </p>
     <p>
-      SVG graphics were produced using <SmartLink href="https://www.figma.com">Figma</SmartLink>. 
+      SVG graphics were produced using <SmartLink href="https://www.figma.com">Figma</SmartLink>.
     </p>
     <p>
       Code was edited using <SmartLink href="https://code.visualstudio.com/">VS Code</SmartLink>.
