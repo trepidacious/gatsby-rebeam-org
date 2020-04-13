@@ -85,8 +85,8 @@ const BlogTag: React.FunctionComponent<{tag: string}> = ({ tag }) => {
       return (
         <Badge
           pill
-          className={"badge-outline-" + m.color}
-          variant="secondary"
+          className={"badge-bright-outline-" + m.color}
+          variant="light"
           as="a"
           href={m.url}
           target="_blank"
@@ -99,8 +99,8 @@ const BlogTag: React.FunctionComponent<{tag: string}> = ({ tag }) => {
       return (
         <Badge
           pill
-          className={"badge-outline-" + m.color}
-          variant="secondary"
+          className={"badge-bright-outline-" + m.color}
+          variant="light"
           as={Link}
           to={m.url}
         >
@@ -113,8 +113,8 @@ const BlogTag: React.FunctionComponent<{tag: string}> = ({ tag }) => {
     return (
       <Badge
         pill
-        className={"badge-outline-" + color}
-        variant="secondary"
+        className={"badge-bright-outline-" + color}
+        variant="light"
       >
         {tag}
       </Badge>

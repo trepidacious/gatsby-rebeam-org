@@ -4,7 +4,7 @@ import { Badge } from "react-bootstrap";
 const DateTag: React.FunctionComponent<{date: string}> = ({ date }) => (
   <Badge
     pill
-    className="badge-outline-grey"
+    className="badge-bright-outline-grey"
     variant="light"
   >
     {date}
