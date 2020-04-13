@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql, StaticQuery } from "gatsby";
-import { Card } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 
 const query = graphql`
   query {
@@ -28,11 +28,11 @@ const BlogList = () => (
     query={query}
     render={(data) => (
       <>
-        <Card>
+        <ListGroup variant="flush">
           {/* <Card.Header>Blog Entries</Card.Header> */}
 
           {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
-            <Card.Body key={node.id}>
+            <ListGroup.Item key={node.id}>
               {/* <List.Icon
                 name="envelope open outline"
                 size="large"
@@ -49,10 +49,10 @@ const BlogList = () => (
                 {/* {node.excerpt.split('<!--end-excerpt-->')[0]} */}
                 {node.frontmatter.date}
               </Card.Text>
-            </Card.Body>
+            </ListGroup.Item>
           ))}
 
-        </Card>
+        </ListGroup>
       </>
     )}
   />
