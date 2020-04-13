@@ -1,12 +1,13 @@
 import React from "react";
 import { isAbsoluteURL } from "./smart-link";
-import { Label, SemanticCOLORS } from "semantic-ui-react";
 import { Link } from "gatsby";
+import { Color } from "./colors";
+import { Badge } from "react-bootstrap";
 
 /**
  * Known tags get a custom color and url
  */
-const metadata: Record<string, {color: SemanticCOLORS, url: string}> = {
+const metadata: Record<string, {color: Color, url: string}> = {
   "Gatsby": {
     color: "violet",
     url: "https://www.gatsbyjs.org/",
@@ -45,7 +46,7 @@ const metadata: Record<string, {color: SemanticCOLORS, url: string}> = {
   },
 };
 
-const colors: SemanticCOLORS[] = [
+const colors: Color[] = [
   "red",
   // "orange",
   // 'yellow',
@@ -82,30 +83,41 @@ const BlogTag: React.FunctionComponent<{tag: string}> = ({ tag }) => {
     const url = m.url;
     if (isAbsoluteURL(url)) {
       return (
-        <Label
-          basic
-          color={m.color}
+        <Badge
+          pill
+          className={"badge-outline-" + m.color}
+          variant="secondary"
           as="a"
           href={m.url}
           target="_blank"
           rel="noopener noreferrer"
         >
           {tag}
-        </Label>
+        </Badge>
       );
     } else {
       return (
-        <Label basic color={m.color} as={Link} to={m.url}>
+        <Badge
+          pill
+          className={"badge-outline-" + m.color}
+          variant="secondary"
+          as={Link}
+          to={m.url}
+        >
           {tag}
-        </Label>
+        </Badge>
       );
     }
   } else {
     const color = colors[Math.abs(hashString(tag)) % colors.length];
     return (
-      <Label basic color={color}>
+      <Badge
+        pill
+        className={"badge-outline-" + color}
+        variant="secondary"
+      >
         {tag}
-      </Label>
+      </Badge>
     );
   }
 };

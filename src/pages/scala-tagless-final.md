@@ -1,7 +1,7 @@
 ---
 title: "Tagless Final"
 date: "2019-02-26"
-tags: ["Scala", "functional programming", "tagless"]
+tags: ["Scala", "FP", "tagless"]
 description: "A walkthrough from State to Free to tagless final"
 ---
 

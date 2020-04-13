@@ -1,0 +1,157 @@
+/* PrismJS 1.15.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
+
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+@import "colors";
+
+$darkGreyTextColor  : #2b2b2b;
+$transparentBlack   : rgba(0, 0, 0, 0.05);
+
+$codeFont           : Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+$codeFontWeight     : 400;
+
+$codeTextColor      : #ddd;
+$codePunctuation    : $codeTextColor;
+$codeBackground     : $themeDarkGrey; //#2d2d2d;
+$codeComment        : #aaa;
+$codeTag            : $themeBrightPurple; //$themeRed; //#e2777a;
+$codeFunctionName   : $themeRed; //#6196cc;
+$codeFunction       : $themeYellow; //#f08d49;
+$codeSymbol         : $themeBrightYellow; //#f8c555;
+$codeKeyword        : $themeBrightPurple; //#cc99cd;
+$codeVariable       : $themeCyan; //#7ec699;
+$codeOperator       : $themeBrightCyan;// #67cdcc;
+$codeInserted       : green;
+
+$codeLineHeight     : 1.5;
+
+code .table {
+  color: $codeTextColor;
+}
+ 
+code[class*="language-"],
+pre[class*="language-"] {
+  color: $codeTextColor;
+  background: none;
+  font-family: $codeFont;
+  font-weight: $codeFontWeight;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: $codeLineHeight;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: $codeBackground;
+  border-radius: .25rem;
+}
+
+/* Inline code */
+:not(pre) > code {
+  white-space: normal;
+  color: $darkGreyTextColor;
+  background-color:  $transparentBlack;
+  font-family: $codeFont;
+  font-weight: $codeFontWeight;
+  border-radius: .25rem;
+  padding: 0.05em 0.15em;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $codeComment;
+}
+
+.token.punctuation {
+  color: $codePunctuation;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: $codeTag;
+}
+
+.token.function-name {
+  color: $codeFunctionName;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: $codeFunction;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: $codeSymbol;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: $codeKeyword;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: $codeVariable;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: $codeOperator;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: $codeInserted;
+}

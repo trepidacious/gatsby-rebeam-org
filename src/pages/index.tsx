@@ -2,8 +2,9 @@ import React from "react";
 
 import Layout from "../components/layout";
 import Hero from "../components/hero";
-import { List } from "semantic-ui-react";
 import { Link } from "gatsby";
+import { ListGroup } from "react-bootstrap";
+// import { Archive, ChatQuote, LayoutTextWindowReverse, FileEarmarkText } from "react-bootstrap-icons";
 
 export default () => {
   return (
@@ -18,35 +19,22 @@ export default () => {
       }
       noBlogList
     >
-      <h3>rebeam.org is (in no particular order):</h3>
-
-      <List relaxed>
-        <List.Item>
-          <List.Icon name="box" color="violet" />
-          <List.Content>
-            A domain registered to have a reasonable package for code on github
-          </List.Content>
-        </List.Item>
-        <List.Item>
-          <List.Icon name="globe" color="teal" />
-          <List.Content>
-            A place to try out (and example of) static website development
-          </List.Content>
-        </List.Item>
-        <List.Item>
-          <List.Icon name="pencil" color="yellow" />
-          <List.Content>
-            A place to dump <Link to="/blog">blog entries</Link> with no better
-            place to go
-          </List.Content>
-        </List.Item>
-        <List.Item>
-          <List.Icon name="file alternate" color="red" />
-          <List.Content>
+      <ListGroup variant="flush">
+        <ListGroup.Item>
+          A domain registered to have a reasonable package for code on github
+        </ListGroup.Item>
+        <ListGroup.Item>
+          A place to try out (and example of) static website development
+        </ListGroup.Item>
+        <ListGroup.Item>
+          A place to dump <Link to="/blog">blog entries</Link> with no better
+          place to go
+        </ListGroup.Item>
+        <ListGroup.Item>
             At some point, a place to host docs and examples for projects
-          </List.Content>
-        </List.Item>
-      </List>
+        </ListGroup.Item>
+      </ListGroup>
+
     </Layout>
   );
 };
