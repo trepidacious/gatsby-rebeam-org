@@ -16,7 +16,7 @@ This one's pretty quick - just install and configure the plugin using [the docs]
 
 Note that the path is relative to the Markdown document itself.
 
-<message negative=true>Note - if you have set up "Smart" links see the additional section below for an extra step to have them work with images.</message>
+<alert variant="info">Note - if you have set up "Smart" links see the additional section below for an extra step to have them work with images.</alert>
 
 This should get you some nice looking images:
 

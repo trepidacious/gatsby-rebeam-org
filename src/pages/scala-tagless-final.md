@@ -5,7 +5,7 @@ tags: ["Scala", "FP", "tagless"]
 description: "A walkthrough from State to Free to tagless final"
 ---
 
-<message negative=true>The following are largely notes for myself. Feel free to add an issue to the site's github repo (link at right of the header) with errors or suggestions.</message>
+<alert variant="warning">The following are largely notes for myself. Feel free to add an issue to the site's github repo (link at right of the header) with errors or suggestions.</alert>
 
 Also note that the code is available on [scalafiddle.io](https://scalafiddle.io/sf/Oku0bdX/0).
 
@@ -41,7 +41,7 @@ Even better, `State` can produce an "output" alongside the modified data, this i
 
 This means that when `State`s are combined using `flatMap`, they are not just run one after another in sequence, but in fact each `State` in the sequence can use the outputs of all previous `State`s (as well as the `Data`) to determine what `Data` and output to produce. 
 
-<message info=true>If the preceding sentence doesn't make sense, try reading "State" as "Edit" and it may make more sense - when dealing with State, always remember that instances of State represent changes to state, not a particular state itself</message>
+<alert variant="info">If the preceding sentence doesn't make sense, try reading "State" as "Edit" and it may make more sense - when dealing with State, always remember that instances of State represent changes to state, not a particular state itself</alert>
 
 To see how using `State`, or any other monad, makes values from previous stages available to later stages, consider a very simple example:
 
