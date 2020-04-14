@@ -5,5 +5,5 @@
 5. https://www.gatsbyjs.org/packages/gatsby-remark-copy-linked-files/
 6. https://www.gatsbyjs.org/packages/gatsby-plugin-styled-components/?=styled%20compon
 7. https://gatsby-remark-rehype-images.netlify.com/custom-component
-8. Darker link color for accessibility
+8. ~~Darker link color for accessibility~~
 9. Include fonts in assets, switch to hans kendrick 3 + open sans?
