@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'HansKendrick-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/HansKendrick-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/HansKendrick-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/HansKendrick-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/HansKendrick-Regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/HansKendrick-Regular.ttf'), format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/HansKendrick-Regular.svg#HansKendrick-Regular') format('svg'); /* Legacy iOS */
+}
+
