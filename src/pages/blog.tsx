@@ -13,6 +13,8 @@ export default ({ data }: {data: any}) => {
       description="Rebeam blog - Scala, tree data system, notes"
       keywords="Scala, React, Tree, Blog"
     >
+      <h2>Blog Entries</h2>
+
       <CardColumns>
         {data.allMarkdownRemark.edges.map(({ node }: {node: any}) => (
           <Card key={node.id}>
