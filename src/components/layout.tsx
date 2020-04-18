@@ -2,7 +2,7 @@ import BlogList from "./blog-list";
 import { graphql, StaticQuery } from "gatsby";
 import Nav from "./header";
 import React, { ReactNode } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { Container, Row, Col } from "react-bootstrap";
 
 // See https://css-tricks.com/couple-takes-sticky-footer/ for footer layout, requires this
@@ -22,8 +22,10 @@ const Layout: React.FunctionComponent<
     `}
     render={(data) => (
       <div style={{ display: "flex", height: "100%", flexDirection: "column" }}>
+
         <Helmet
           title={data.site.siteMetadata.title}
+          defer={false}
           meta={[
             { name: "description", content: description },
             { name: "keywords", content: keywords },
