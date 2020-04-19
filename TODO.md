@@ -10,6 +10,7 @@
 8. ~~Darker link color for accessibility~~
 9. ~~Include fonts in assets, switch to hans kendrick 3 + open sans?~~
 10. ~~Look at notes/warnings on react-helmet~~
-11. Fix padding at top of layout - can we use a responsive style here?
+11. ~~Fix padding at top of layout - can we use a responsive style here?~~
 12. Add tree-react to projects.
 13. Look at Metropolis and Inter fonts.
+14. ~~Add entry on fonts, including [google webfonts helper](https://google-webfonts-helper.herokuapp.com/fonts)~~

@@ -36,8 +36,8 @@ const Layout: React.FunctionComponent<
 
         <div style={{ flex: "1 0 auto" }}>
           {hero}
-
-          <Container style={{ marginTop: hero ? "3rem" : "7rem", paddingBottom: "6rem" }}>
+          {/* We use size 3 padding at the top at smallest screen size, then boost to 5 for larger. If there's a hero, it allows margin for the navbar, otherwise we need to add 3.5rem margin. Padding at the bottom for "footer" */}
+          <Container className="pt-3 pt-sm-5" style={{ marginTop: hero ? "0" : "3.5rem", paddingBottom: "6rem" }}>
             <Row xs={12}>
               <Col
                 // At sizes under medium, blog list is hidden so we use all columns
@@ -62,20 +62,6 @@ const Layout: React.FunctionComponent<
             </Row>
           </Container>
         </div>
-
-        {/* <Segment
-          inverted
-          vertical
-          style={{ padding: "1.5em 0", marginTop: "3em" }}
-          className="theme-dark-grey"
-        >
-          <Container>
-            <Grid inverted stackable centered>
-              <Col mobile={16} tablet={14} computer={14}>
-              </Col>
-            </Grid>
-          </Container>
-        </Segment> */}
       </div>
     )}
   />
